@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automize Header Clone</title>
+    <title>Automize 10 - Automize</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -27,11 +27,11 @@
             
             <!-- THANH DIEU HUONG -->
             <nav class="hidden lg:flex space-x-8 font-semibold text-gray-700 text-sm">
-                <a href="#" class="text-red-600 flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-xs"></i></a>
+                <a href="#" class="text-red-600 flex items-center gap-1 font-bold">Home <i class="fa-solid fa-chevron-down text-xs"></i></a>
                 
-                    <div class="group relative h-full flex items-center">
+                    <div class="group relative h-full flex items-center font-bold">
                 
-                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
+                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4 ">
                         Shop <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
 
@@ -83,7 +83,7 @@
                 </div>
 
             <!-- PRODUCT -->
-                <div class="group relative h-full flex items-center">
+                <div class="group relative h-full flex items-center font-bold">
                     <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
                         Product <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
@@ -164,7 +164,7 @@
                 </div>
 
                 <!-- PAGES -->
-                <div class="group relative h-full flex items-center">
+                <div class="group relative h-full flex items-center font-bold">
                     <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
                         Pages <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
@@ -191,7 +191,7 @@
                 </div>
 
                 <!-- BLOG -->
-                <div class="group relative h-full flex items-center">
+                <div class="group relative h-full flex items-center font-bold">
                     <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
                         Blog <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
@@ -278,8 +278,8 @@
             <div class="flex flex-col md:flex-row items-center">
 
                 <!-- BROWSE -->
-                <div class="group relative min-w-[270px] h-full z-40">
-                    <div class="bg-white text-gray-900 h-full px-6 flex items-center gap-4 cursor-pointer border-r border-gray-100">
+                <div class="group relative min-w-[250px] h-full z-40">
+                    <div class="bg-white text-gray-800 h-full px-6 flex items-center gap-4 cursor-pointer border-r border-gray-100">
                         <i class="fa-solid fa-bars text-xl"></i>
                         <span class="font-extrabold text-sm uppercase tracking-wide">Browse All Categories</span>
                     </div>
@@ -288,50 +288,116 @@
                         
                         <ul class="text-[15px] font-medium text-gray-800">
                             
-                            <li>
+                            <li class="group/sub relative"> 
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-lightbulb w-5 text-center text-black text-lg"></i> 
+                                        <i class="fa-solid fa-lightbulb w-5 text-center text-grey-800 text-lg"></i> 
                                         Headlights & Lighting
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs"></i>
                                 </a>
+
+                                <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-4 min-h-full">
+                                    <div class="px-6">
+                                        <h3 class="text-gray-400 font-medium mb-4 text-sm">Headlights & Lighting</h3>
+                                        
+                                        <ul class="space-y-3 text-[14px] text-gray-700 font-medium">
+                                            <li><a href="#" class="block hover:text-red-600 transition">Multibeam Led</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Projector Headlights</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Chevrolet</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Peugeot</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Chevrolet</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Fog Lights</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Interior Lights</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">License Plate Lights</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Rear Fog Lights</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Reflectors</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
                             </li>
 
-                            <li>
+                            <li class="group/sub relative"> 
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-volume-high w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-volume-high w-5 text-center text-grey-800 text-lg"></i>
                                         Car Audio Systems
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs"></i>
                                 </a>
+
+                                <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-4 min-h-full">
+                                    <div class="px-6">
+                                        <h3 class="text-gray-400 font-medium mb-4 text-sm">Car Audio Systems</h3>
+                                        
+                                        <ul class="space-y-3 text-[14px] text-gray-700 font-medium">
+                                            <li><a href="#" class="block hover:text-red-600 transition">Car Amplifier</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Car Speakers</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Car Starters</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Car Stereo</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Car Subwoofers</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                             </li>
 
-                            <li>
+                            <li class="group/sub relative"> 
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-dharmachakra w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-dharmachakra w-5 text-center text-grey-800 text-lg"></i>
                                         Tires & Wheels
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs"></i>
                                 </a>
+
+                                <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-4 min-h-full">
+                                    <div class="px-6">
+                                        <h3 class="text-gray-400 font-medium mb-4 text-sm">Tires & Wheels</h3>
+                                        
+                                        <ul class="space-y-3 text-[14px] text-gray-700 font-medium">
+                                            <li><a href="#" class="block hover:text-red-600 transition">Alloy Wheels</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Competition Tire</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Light Truck</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Lug Nut</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Passenger Car</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">SUV/CUV</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                             </li>
 
-                            <li>
+                            <li class="group/sub relative"> 
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-dna w-5 text-center text-black text-lg -rotate-45"></i>
+                                        <i class="fa-solid fa-dna w-5 text-center text-grey-800 text-lg -rotate-45"></i>
                                         Suspension
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs"></i>
                                 </a>
+
+                                <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-4 min-h-full">
+                                    <div class="px-6">
+                                        <h3 class="text-gray-400 font-medium mb-4 text-sm">Suspension</h3>
+                                        
+                                        <ul class="space-y-3 text-[14px] text-gray-700 font-medium">
+                                            <li><a href="#" class="block hover:text-red-600 transition">Dampers</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Struts</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Springs</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Wheel</a></li>
+                                            <li><a href="#" class="block hover:text-red-600 transition">Control Arm</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                             </li>
 
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-screwdriver-wrench w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-screwdriver-wrench w-5 text-center text-grey-800 text-lg"></i>
                                         Tools & Equipment
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i> </a>
@@ -340,7 +406,7 @@
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-oil-can w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-oil-can w-5 text-center text-grey-800 text-lg"></i>
                                         Oil Car
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
@@ -350,7 +416,7 @@
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-compact-disc w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-compact-disc w-5 text-center text-grey-800 text-lg"></i>
                                         Brakes
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
@@ -360,7 +426,7 @@
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-shield-halved w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-shield-halved w-5 text-center text-grey-800 text-lg"></i>
                                         Auto Safety & Security
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
@@ -370,7 +436,7 @@
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-fan w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-fan w-5 text-center text-grey-800 text-lg"></i>
                                         Automotive Rims
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
@@ -380,7 +446,7 @@
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-regular fa-clone w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-regular fa-clone w-5 text-center text-grey-800 text-lg"></i>
                                         Automotive Display
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
@@ -390,7 +456,7 @@
                             <li>
                                 <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition">
                                     <div class="flex items-center gap-4">
-                                        <i class="fa-solid fa-car-battery w-5 text-center text-black text-lg"></i>
+                                        <i class="fa-solid fa-car-battery w-5 text-center text-grey-800 text-lg"></i>
                                         Battery
                                     </div>
                                     <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
@@ -402,9 +468,26 @@
                 </div>
 
                 <div class="flex-1 w-full px-4 py-3">
-                    <div class="bg-white rounded-sm flex items-center h-12 overflow-hidden">
-                        <div class="hidden sm:flex items-center px-4 border-r border-gray-200 text-xs font-bold text-gray-600 whitespace-nowrap cursor-pointer h-full hover:bg-gray-50">
-                            ALL CATEGORIES <i class="fa-solid fa-chevron-down ml-2"></i>
+                    <div class="bg-white rounded-sm flex items-center h-12">
+                        <div class="hidden sm:flex relative group items-center px-4 border-r border-gray-200 text-xs font-bold text-gray-700 whitespace-nowrap cursor-pointer h-full hover:bg-gray-50">
+    
+                            <span>ALL CATEGORIES</span> 
+                            <i class="fa-solid fa-chevron-down ml-2 transition-transform duration-300 group-hover:rotate-180"></i>
+                            <div class="absolute top-full left-0 w-[220px] bg-white shadow-xl border-t-2 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60] text-left">
+                                <ul class="py-2 text-[13px] font-medium text-gray-600 max-h-[400px] overflow-y-auto">
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition font-bold">All Categories</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Home</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Accessories</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Automotive Rims</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Brakes</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Detailing</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Headlight</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Tires & Wheels</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">-Automotive Display</a></li>
+                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">-Car Audio Systems</a></li>
+                                </ul>
+                            </div>
+
                         </div>
                         <input type="text" placeholder="ENTER YOUR KEYWORD" class="flex-1 px-4 text-sm outline-none placeholder-gray-400 font-medium h-full">
                         <button class="px-6 text-gray-500 hover:text-red-600 h-full">
