@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automize Header Clone</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <div class="bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <div class="text-3xl font-black uppercase tracking-widest text-black">
+                Automize
+            </div>
+
+            <nav class="hidden lg:flex space-x-8 font-semibold text-gray-700 text-sm">
+                <a href="#" class="text-red-600 flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-xs"></i></a>
+                
+                <div class="group relative h-full flex items-center">
+    
+            <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
+                Shop <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+            </a>
+
+            <div class="absolute top-full -left-20 w-[1000px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                
+                <div class="grid grid-cols-4 gap-8 p-8 text-left">
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
+                        <ul class="space-y-3 text-gray-500 font-normal text-sm">
+                            <li><a href="#" class="hover:text-red-600 transition">Category Left Sidebar</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Right Sidebar</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Top Sidebar</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Without Sidebar</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Full Width</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
+                        <ul class="space-y-3 text-gray-500 font-normal text-sm">
+                            <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Left</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Right</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Top</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Bottom</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
+                        <ul class="space-y-3 text-gray-500 font-normal text-sm">
+                            <li><a href="#" class="hover:text-red-600 transition">Numbered Pagination</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Load More Button</a></li>
+                            <li><a href="#" class="hover:text-red-600 transition">Infinity Scroll Load More</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="relative flex items-end justify-center bg-gray-50 rounded-lg overflow-hidden h-full min-h-[200px]">
+                        <img src="https://img.freepik.com/free-photo/smiling-mechanic-with-arms-crossed_1187-1606.jpg?w=740" 
+                            class="object-contain h-full w-full" alt="Mechanic">
+                        
+                        <div class="absolute bottom-4 right-4 bg-white/90 px-3 py-1 text-xs font-bold rounded shadow">
+                            New Tires
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+                <a href="#" class="hover:text-red-600 flex items-center gap-1">Product <i class="fa-solid fa-chevron-down text-xs"></i></a>
+                <a href="#" class="hover:text-red-600 flex items-center gap-1">Pages <i class="fa-solid fa-chevron-down text-xs"></i></a>
+                <a href="#" class="hover:text-red-600 flex items-center gap-1">Blog <i class="fa-solid fa-chevron-down text-xs"></i></a>
+            </nav>
+
+            <div class="hidden xl:flex items-center space-x-6 text-sm font-semibold text-gray-600">
+                <a href="#" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fa-solid fa-truck-fast"></i> Track Your Order
+                </a>
+                <a href="#" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fa-solid fa-location-dot"></i> Store Locator
+                </a>
+                <div class="flex items-center gap-2 text-gray-800">
+                    <i class="fa-solid fa-phone"></i> 
+                    Call Us: <span class="text-red-600 font-bold">+(123)-456-7890</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-red-600">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+
+                <div class="bg-white text-gray-800 py-4 px-8 font-bold text-sm flex items-center gap-3 cursor-pointer min-w-[250px]">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                    BROWSE ALL CATEGORIES
+                </div>
+
+                <div class="flex-1 w-full px-4 py-3">
+                    <div class="bg-white rounded-sm flex items-center h-12 overflow-hidden">
+                        <div class="hidden sm:flex items-center px-4 border-r border-gray-200 text-xs font-bold text-gray-600 whitespace-nowrap cursor-pointer h-full hover:bg-gray-50">
+                            ALL CATEGORIES <i class="fa-solid fa-chevron-down ml-2"></i>
+                        </div>
+                        <input type="text" placeholder="ENTER YOUR KEYWORD" class="flex-1 px-4 text-sm outline-none placeholder-gray-400 font-medium h-full">
+                        <button class="px-6 text-gray-500 hover:text-red-600 h-full">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6 px-6 py-3 text-white">
+                    
+                    <div class="flex items-center gap-3 cursor-pointer">
+                        <i class="fa-regular fa-user text-2xl"></i>
+                        <div class="leading-tight text-sm hidden lg:block">
+                            <div class="font-normal text-xs opacity-90">Account</div>
+                            <div class="font-bold">Hello, Login</div>
+                        </div>
+                    </div>
+
+                    <div class="relative cursor-pointer">
+                        <i class="fa-regular fa-heart text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </div>
+
+                    <div class="relative cursor-pointer">
+                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative bg-black h-[500px] flex items-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-xl">
+                <span class="text-red-600 font-bold tracking-widest uppercase mb-2 block">Best Sellers</span>
+                <h1 class="text-white text-5xl md:text-6xl font-black uppercase leading-tight mb-6">
+                    Passenger Car <br> Wheels 18 Inch
+                </h1>
+                <button class="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-red-600 hover:text-white transition duration-300">
+                    SHOP NOW
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
