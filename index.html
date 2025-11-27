@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automize Header Clone</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <div class="bg-white border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <div class="text-3xl font-black uppercase tracking-widest text-black">
+                Automize
+            </div>
+            
+            <!-- THANH DIEU HUONG -->
+            <nav class="hidden lg:flex space-x-8 font-semibold text-gray-700 text-sm">
+                <a href="#" class="text-red-600 flex items-center gap-1">Home <i class="fa-solid fa-chevron-down text-xs"></i></a>
+                
+                    <div class="group relative h-full flex items-center">
+                
+                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
+                        Shop <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+                    </a>
+
+                    <div class="absolute top-full -left-20 w-[1000px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                        
+                        <div class="grid grid-cols-4 gap-8 p-8 text-left">
+                            
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
+                                <ul class="space-y-3 text-gray-500 font-normal text-sm">
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Left Sidebar</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Right Sidebar</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Top Sidebar</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Without Sidebar</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Full Width</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
+                                <ul class="space-y-3 text-gray-500 font-normal text-sm">
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Left</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Right</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Top</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Bottom</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
+                                <ul class="space-y-3 text-gray-500 font-normal text-sm">
+                                    <li><a href="#" class="hover:text-red-600 transition">Numbered Pagination</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Load More Button</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Infinity Scroll Load More</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="relative flex items-end justify-center bg-gray-50 rounded-lg overflow-hidden h-full min-h-[200px]">
+                                <img src="https://img.freepik.com/free-photo/smiling-mechanic-with-arms-crossed_1187-1606.jpg?w=740" 
+                                    class="object-contain h-full w-full" alt="Mechanic">
+                                
+                                <div class="absolute bottom-4 right-4 bg-white/90 px-3 py-1 text-xs font-bold rounded shadow">
+                                    New Tires
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            <!-- PRODUCT -->
+                <div class="group relative h-full flex items-center">
+                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
+                        Product <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+                    </a>
+
+                    <div class="absolute top-full -left-60 w-[1100px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                        
+                        <div class="grid grid-cols-4 gap-8 p-10 text-left">
+                            
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
+                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Left</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Top</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Bottom</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Right</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
+                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Image Slider</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Tab Accordion</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Image Scroll Left</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Image Scroll Right</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
+                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Show All Variants</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Video</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Sticky Add To Cart</a></li>
+                                    <li><a href="#" class="hover:text-red-600 transition">Product Deal Countdown</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-5 text-base">Best Selling</h3>
+                                
+                                <div class="border border-gray-100 rounded-lg p-4 flex gap-4 items-center hover:shadow-lg transition duration-300 cursor-pointer">
+                                    <div class="w-24 h-24 flex-shrink-0">
+                                        <img src="https://m.media-amazon.com/images/I/71w+mC+4bRL._AC_SL1500_.jpg" 
+                                            class="w-full h-full object-contain mix-blend-multiply" alt="Wheel">
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex text-gray-200 text-xs mb-1">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <span class="text-gray-400 ml-1">(0)</span>
+                                        </div>
+                                        
+                                        <p class="text-xs text-gray-500 mb-2 line-clamp-2">
+                                            Curabitur id est vel nisi dictum rutrum...
+                                        </p>
+                                        
+                                        <div class="font-bold text-gray-900 text-lg">$190.00</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center gap-2 mt-5">
+                                    <span class="w-2.5 h-2.5 rounded-full border border-red-600 flex items-center justify-center cursor-pointer">
+                                        <span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
+                                    </span>
+                                    <span class="w-2 h-2 rounded-full bg-gray-300 hover:bg-red-400 cursor-pointer transition"></span>
+                                    <span class="w-2 h-2 rounded-full bg-gray-300 hover:bg-red-400 cursor-pointer transition"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGES -->
+                <div class="group relative h-full flex items-center">
+                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
+                        Pages <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+                    </a>
+
+                    <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                        
+                        <ul class="py-4 text-sm text-gray-500 font-normal">
+                            
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Contact us</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">About us</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">FAQs Page</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Store Locations</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">404 Page</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Store Direction</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Testimonial</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Wishlist</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">My account</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Order Tracking</a></li>
+                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Checkout</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- BLOG -->
+                <div class="group relative h-full flex items-center">
+                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
+                        Blog <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+                    </a>
+
+                    <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                        
+                        <ul class="py-4 text-sm text-gray-800 font-bold">
+                            
+                            <li class="group/sub relative">
+                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
+                                    Blog Layout <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                                </a>
+                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
+                                    <ul class="py-4 text-gray-500 font-normal">
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Left Sidebar</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Right Sidebar</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Without Sidebar</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="group/sub relative">
+                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
+                                    Post Layout <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                                </a>
+                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
+                                    <ul class="py-4 text-gray-500 font-normal">
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Sidebar</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">One Column</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Parallax Image</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Simple Title</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="group/sub relative">
+                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
+                                    Blog Style <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                                </a>
+                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
+                                    <ul class="py-4 text-gray-500 font-normal">
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog List</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Grid</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="group/sub relative">
+                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
+                                    Blog Format <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                                </a>
+                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
+                                    <ul class="py-4 text-gray-500 font-normal">
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Post format video</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Post format audio</a></li>
+                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Post format gallery</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </nav>
+
+            <div class="hidden xl:flex items-center space-x-6 text-sm font-semibold text-gray-600">
+                <a href="#" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fa-solid fa-truck-fast"></i> Track Your Order
+                </a>
+                <a href="#" class="flex items-center gap-2 hover:text-red-600">
+                    <i class="fa-solid fa-location-dot"></i> Store Locator
+                </a>
+                <div class="flex items-center gap-2 text-gray-800">
+                    <i class="fa-solid fa-phone"></i> 
+                    Call Us: <span class="text-red-600 font-bold">+(123)-456-7890</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-red-600 h-[70px]">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+
+                <!-- BROWSE -->
+                <div class="group relative min-w-[270px] h-full z-40">
+                    <div class="bg-white text-gray-900 h-full px-6 flex items-center gap-4 cursor-pointer border-r border-gray-100">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                        <span class="font-extrabold text-sm uppercase tracking-wide">Browse All Categories</span>
+                    </div>
+
+                    <div class="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        
+                        <ul class="text-[15px] font-medium text-gray-800">
+                            
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-lightbulb w-5 text-center text-black text-lg"></i> 
+                                        Headlights & Lighting
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-volume-high w-5 text-center text-black text-lg"></i>
+                                        Car Audio Systems
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-dharmachakra w-5 text-center text-black text-lg"></i>
+                                        Tires & Wheels
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-dna w-5 text-center text-black text-lg -rotate-45"></i>
+                                        Suspension
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-screwdriver-wrench w-5 text-center text-black text-lg"></i>
+                                        Tools & Equipment
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i> </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-oil-can w-5 text-center text-black text-lg"></i>
+                                        Oil Car
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-compact-disc w-5 text-center text-black text-lg"></i>
+                                        Brakes
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-shield-halved w-5 text-center text-black text-lg"></i>
+                                        Auto Safety & Security
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-fan w-5 text-center text-black text-lg"></i>
+                                        Automotive Rims
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-regular fa-clone w-5 text-center text-black text-lg"></i>
+                                        Automotive Display
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition">
+                                    <div class="flex items-center gap-4">
+                                        <i class="fa-solid fa-car-battery w-5 text-center text-black text-lg"></i>
+                                        Battery
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs opacity-0"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex-1 w-full px-4 py-3">
+                    <div class="bg-white rounded-sm flex items-center h-12 overflow-hidden">
+                        <div class="hidden sm:flex items-center px-4 border-r border-gray-200 text-xs font-bold text-gray-600 whitespace-nowrap cursor-pointer h-full hover:bg-gray-50">
+                            ALL CATEGORIES <i class="fa-solid fa-chevron-down ml-2"></i>
+                        </div>
+                        <input type="text" placeholder="ENTER YOUR KEYWORD" class="flex-1 px-4 text-sm outline-none placeholder-gray-400 font-medium h-full">
+                        <button class="px-6 text-gray-500 hover:text-red-600 h-full">
+                            <i class="fa-solid fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6 px-6 py-3 text-white">
+                    
+                    <div class="flex items-center gap-3 cursor-pointer">
+                        <i class="fa-regular fa-user text-2xl"></i>
+                        <div class="leading-tight text-sm hidden lg:block">
+                            <div class="font-normal text-xs opacity-90">Account</div>
+                            <div class="font-bold">Hello, Login</div>
+                        </div>
+                    </div>
+
+                    <div class="relative cursor-pointer">
+                        <i class="fa-regular fa-heart text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </div>
+
+                    <div class="relative cursor-pointer">
+                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative bg-black h-[500px] flex items-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-xl">
+                <span class="text-red-600 font-bold tracking-widest uppercase mb-2 block">Best Sellers</span>
+                <h1 class="text-white text-5xl md:text-6xl font-black uppercase leading-tight mb-6">
+                    Passenger Car <br> Wheels 18 Inch
+                </h1>
+                <button class="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-red-600 hover:text-white transition duration-300">
+                    SHOP NOW
+                </button>
+            </div>
+        </div>
+    </div>
+    
+ <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-3xl font-black tracking-wide">FEATURED COLLECTIONS</h2>
+
+            <div class="flex items-center space-x-3">
+                <button class="w-10 h-10 rounded-lg bg-white shadow flex items-center justify-center hover:bg-gray-100">
+                    <i class="fa-solid fa-chevron-left text-gray-700"></i>
+                </button>
+
+                <button class="w-10 h-10 rounded-lg bg-white shadow flex items-center justify-center hover:bg-gray-100">
+                    <i class="fa-solid fa-border-all text-gray-700"></i>
+                </button>
+
+                <button class="w-10 h-10 rounded-lg bg-white shadow flex items-center justify-center hover:bg-gray-100">
+                    <i class="fa-solid fa-chevron-right text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg flex items-center gap-6">
+                <img src="https://i.ibb.co/0q7sPQy/brake.png" class="w-40 object-contain">
+
+                <div>
+                    <h3 href="#" class="hover:text-red-600 flex items-center gap-1">BRAKES SYSTEM</h3>
+                       
+                    <ul class="text-gray-600 text-sm space-y-1 mb-4">
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Frictional brake</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Air brake</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Hydraulic brake</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Electromagnetic brake</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Servo brake</li>
+                    </ul>
+
+                    <a href="#" class="text-gray-500 text-sm font-semibold hover:text-red-600">
+                        Shop All Collection →
+                    </a>
+                </div>
+            </div>
+
+           
+            <div class="bg-white rounded-2xl p-8 shadow-lg flex items-center gap-6">
+                <img src="https://i.ibb.co/4t3WHww/tire.png" class="w-40 object-contain">
+
+                <div>
+                    <h3 href="#" class="hover:text-red-600 flex items-center gap-1">TIRES & WHEELS</h3>
+
+                    <ul class="text-gray-600 text-sm space-y-1 mb-4">
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Michelin</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Goodyear Tires</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Continental</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Good Year</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Yokohama</li>
+                    </ul>
+
+                    <a href="#" class="text-gray-500 text-sm font-semibold hover:text-red-600">
+                        Shop All Collection →
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg flex items-center gap-6">
+                <img src="https://i.ibb.co/5TxkhV1/lights.png" class="w-40 object-contain">
+
+                <div>
+                    <h3 href="#" class="hover:text-red-600 flex items-center gap-1">SUSPENSION</h3>
+
+                    <ul class="text-gray-600 text-sm space-y-1 mb-4">
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Bilstein</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Skyjacker</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">HSD Coilovers</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">Eibach</li>
+                        <li href="#" class="hover:text-red-600 flex items-center gap-1">KYB</li>
+                    </ul>
+
+                    <a href="#" class="text-gray-500 text-sm font-semibold hover:text-red-600">
+                        Shop All Collection →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+
+<footer class="w-full py-10 px-6 grid grid-cols-1 md:grid-cols-4 gap-12 bg-black text-white">
+  <div class="col-span-1">
+    <h1 class="text-4xl font-extrabold mb-4 text-red-600 tracking-wider"> 
+        <img src="style_image/logo.png" alt="logo" class="h-10"> 
+    </h1>
+    <p class="mb-8 text-sm text-gray-300">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    </p>
+
+    <ul class="space-y-4 text-sm">
+      <li class="flex items-start space-x-3">
+        <span class="text-xl text-red-600">📞</span>
+        <div class="flex flex-col">
+          <span class="font-semibold">We're available by phone</span>
+          <span class="font-bold text-lg text-white transition-colors hover:text-red-500 cursor-pointer">+123-456-789</span>
+        </div>
+      </li>
+      <li class="flex items-start space-x-3">
+        <span class="text-xl text-red-600">📧</span>
+        <span class="transition-colors hover:text-red-500 cursor-pointer">info@example.com</span>
+      </li>
+      <li class="flex items-start space-x-3">
+        <span class="text-xl text-red-600">🕒</span>
+        <span>Monday till Friday 10 to 6 EST</span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h2 class="text-lg font-semibold mb-4 text-red-600 transition-colors hover:text-red-500">HELP & SUPPORT</h2>
+    <ul class="space-y-2 text-sm">
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Shipping Info</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Returns</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">How To Order</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">How To Track</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Size Guide</li>
+    </ul>
+  </div>
+
+
+  <div>
+    <h2 class="text-lg font-semibold mb-4 text-red-600 transition-colors hover:text-red-500">COMPANY INFO</h2>
+    <ul class="space-y-2 text-sm">
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">About Us</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Our Blog</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Careers</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Store Locations</li>
+      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Testimonial</li>
+    </ul>
+  </div>
+
+
+  <div>
+    <h2 class="text-lg font-semibold mb-4 text-red-600 transition-colors hover:text-red-500">CUSTOMER CARE</h2>
+    <ul class="space-y-2 text-sm">
+        <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Contact Us</li>
+        <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">FAQ</li>
+<li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Privacy Policy</li>
+        <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Terms of Service</li>
+    </ul>
+  </div>
+
+
+  <div class="col-span-full mt-10 border-t border-gray-700 pt-6">
+    <br class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+        <div class="border border-gray-700 rounded-xl p-6 order-2 md:order-1">
+            <p class="font-semibold mb-4 tracking-wide">FOLLOW US :</p>
+            <div class="flex space-x-6 text-black">
+    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-blue-600 hover:text-white cursor-pointer">
+        <a href="http://127.0.0.1:5500/index.html?gidzl=HCac4InYKmj2qouMA7XG2KJHAn0sTmC3Nuny76SYLWvOXIWSDNu73bdHVX1ZB5GC3efz4M9SdqmgAsTS3G"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+
+    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-red-600 hover:text-white cursor-pointer">
+        <a href="http://127.0.0.1:5500/index.html?gidzl=HCac4InYKmj2qouMA7XG2KJHAn0sTmC3Nuny76SYLWvOXIWSDNu73bdHVX1ZB5GC3efz4M9SdqmgAsTS3G"><i class="fa-brands fa-pinterest-p"></i></a>
+    </div>
+
+    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-black hover:text-white cursor-pointer">
+        <a href="http://127.0.0.1:5500/index.html?gidzl=HCac4InYKmj2qouMA7XG2KJHAn0sTmC3Nuny76SYLWvOXIWSDNu73bdHVX1ZB5GC3efz4M9SdqmgAsTS3G"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+
+    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-blue-500 hover:text-white cursor-pointer">
+        <a href="http://127.0.0.1:5500/index.html?gidzl=HCac4InYKmj2qouMA7XG2KJHAn0sTmC3Nuny76SYLWvOXIWSDNu73bdHVX1ZB5GC3efz4M9SdqmgAsTS3G"><i class="fa-brands fa-vimeo-v"></i></a>
+    </div>
+
+    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-black hover:text-white cursor-pointer">
+        <a href="http://127.0.0.1:5500/index.html?gidzl=HCac4InYKmj2qouMA7XG2KJHAn0sTmC3Nuny76SYLWvOXIWSDNu73bdHVX1ZB5GC3efz4M9SdqmgAsTS3G"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+
+    <div class="h-10">DOWNLOAD APP ON MOBILE</div>
+
+    <div><img src="style_image/google-play.png"></div>
+
+    <div><img src="style_image/apple-store.png"></div>
+</div>
+        </div>
+        <br></br>
+        <div class="**flex items-center** text-sm text-gray-500 order-1 md:order-2 **justify-center md:justify-start**">
+        Copyright © 2024 RisingBamboo. All Rights Reserved.
+    </div>
+
+    </div>
+  
+
+</footer>
+</body>
+</html>
