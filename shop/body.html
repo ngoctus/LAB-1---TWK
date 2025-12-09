@@ -1,51 +1,72 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automize 10 - Automize</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+<section>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        body { font-family: 'Cairo', sans-serif; }
-        .bg-automize-red { background-color: #d3150b; }
+        
+        body { 
+            font-family: 'Cairo', sans-serif; 
+        }
+        
+        .bg-automize-red { 
+            background-color: #d3150b; 
+        }
 
-        .shop-page * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        .shop-page body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
 
-        .shop-page .container {
+.container {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
             gap: 30px;
+            min-height: calc(100vh - 40px);
         }
 
-        .shop-page .sidebar {
+        /* SIDEBAR */
+        .sidebar {
             width: 280px;
             flex-shrink: 0;
         }
 
-        .shop-page .filter-section {
+        .filter-header {
+            background: white;
+            padding: 15px 20px;
+            margin-bottom: 2px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .filter-icon {
+            margin-right: 10px;
+        }
+
+        .filter-text {
+            font-weight: bold;
+        }
+
+        .filter-divider {
+            height: 2px;
+            background: #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .filter-section {
             background: white;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 5px;
         }
 
-        .shop-page .filter-title {
+        .filter-title {
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 15px;
@@ -53,7 +74,7 @@
             color: #333;
         }
 
-        .shop-page .filter-option {
+        .filter-option {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
@@ -61,715 +82,542 @@
             color: #666;
         }
 
-        .shop-page .filter-option input[type="checkbox"] {
+        .filter-option input[type="checkbox"] {
             margin-right: 8px;
+            cursor: pointer;
         }
 
-        .shop-page .filter-option span {
-            margin-left: auto;
+        .filter-option label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .filter-option span {
             color: #999;
             font-size: 12px;
         }
 
-        .shop-page .price-slider {
-            margin: 20px 0;
+        /* PRICE FILTER */
+        .price-filter-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 15px;
         }
 
-        .shop-page .price-range {
+        .price-slider-box {
+            position: relative;
+            height: 32px;
+            margin-bottom: 8px;
+        }
+
+        .price-slider-track {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: #dcdcdc;
+            border-radius: 4px;
+            transform: translateY(-50%);
+        }
+
+        .price-slider-range {
+            position: absolute;
+            top: 50%;
+            height: 4px;
+            background: #000;
+            border-radius: 4px;
+            transform: translateY(-50%);
+        }
+
+        .price-slider-box input[type=range] {
+            position: absolute;
+            width: 100%;
+            height: 32px;
+            margin: 0;
+            pointer-events: none;
+            background: transparent;
+            -webkit-appearance: none;
+        }
+
+        .price-slider-box input[type=range]::-webkit-slider-runnable-track {
+            background: transparent;
+        }
+
+        .price-slider-box input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            pointer-events: auto;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .price-slider-box input[type=range]::-moz-range-thumb {
+            pointer-events: auto;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .price-labels {
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
-            font-size: 13px;
-            color: #666;
+            color: #444;
+            font-size: 12px;
+            margin-bottom: 8px;
         }
 
-        .shop-page .main-content {
+        .range-text {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .filter-btn {
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            font-size: 12px;
+            padding: 6px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .filter-btn:hover {
+            background: #eee;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
             flex: 1;
+            overflow-y: auto;
         }
 
-        .shop-page .toolbar {
-            background: white;
+        .toolbar {
+            background-color: #fff;
             padding: 15px 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        .shop-page .view-options button {
-            padding: 8px 12px;
+        .view-options {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .view-btn {
+            width: 42px;
+            height: 42px;
             border: 1px solid #ddd;
-            background: white;
+            background-color: #fff;
+            color: #666;
+            font-size: 16px;
             cursor: pointer;
-            margin-right: 5px;
-        }
-
-        .shop-page .view-options button.active {
-            background: #333;
-            color: white;
-        }
-
-        .shop-page .sort-select {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
             border-radius: 3px;
-            font-size: 13px;
-        }
-
-        .shop-page .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .shop-page .product-card {
-            background: white;
-            border-radius: 5px;
-            padding: 20px;
-            position: relative;
-            transition: box-shadow 0.3s;
-        }
-
-        .shop-page .product-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .shop-page .wishlist-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: white;
-            border: 1px solid #ddd;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .shop-page .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            margin-bottom: 15px;
+        .view-btn:hover {
+            background-color: #f5f5f5;
+            border-color: #999;
         }
 
-        .shop-page .product-category {
-            font-size: 11px;
-            color: #999;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+        .view-btn.active {
+            background-color: #000;
+            color: #fff;
+            border-color: #000;
         }
 
-        .shop-page .product-title {
+        .sort-select {
+            padding: 10px 35px 10px 15px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
             font-size: 14px;
+            color: #666;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+        }
+
+        .sort-select:focus {
+            outline: none;
+            border-color: #999;
+        }
+
+        /* PRODUCTS GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            transition: all 0.3s;
+        }
+
+        .products-grid.view-2col {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .products-grid.view-list {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: visible;
+            position: relative;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: #fff;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .wishlist-btn:hover {
+            background: #ff4757;
+            color: #fff;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .view-2col .product-image {
+            height: 400px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: #888;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 16px;
             color: #333;
             margin-bottom: 10px;
             min-height: 40px;
-            line-height: 1.4;
         }
 
-        .shop-page .product-rating {
-            display: flex;
-            align-items: center;
+        .product-rating {
             margin-bottom: 10px;
         }
 
-        .shop-page .stars {
-            color: #ffc107;
+        .stars {
+            color: #ffd700;
+            font-size: 14px;
+        }
+
+        .rating-count {
+            color: #888;
             font-size: 12px;
-            margin-right: 5px;
+            margin-left: 5px;
         }
 
-        .shop-page .rating-count {
-            font-size: 11px;
-            color: #999;
-        }
-
-        .shop-page .product-price {
+        .product-price {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .shop-page .price-current {
-            font-size: 18px;
+        .price-current {
+            font-size: 20px;
             font-weight: bold;
-            color: #333;
+            color: #e74c3c;
         }
 
-        .shop-page .price-old {
-            font-size: 14px;
-            color: #999;
+        .price-old {
+            font-size: 16px;
+            color: #888;
             text-decoration: line-through;
         }
 
-        .shop-page .badge-container {
+        .badge-container {
             position: absolute;
-            bottom: 15px;
-            left: 15px;
+            top: 10px;
+            left: 10px;
             display: flex;
+            flex-direction: column;
             gap: 5px;
         }
 
-        .shop-page .badge {
-            background: #ffeb3b;
-            color: #333;
-            font-size: 10px;
+        .badge {
+            background: #e74c3c;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 11px;
             font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 3px;
         }
 
-        .shop-page .pagination {
-            text-align: center;
-            padding: 20px 0;
-            color: #666;
-            font-size: 14px;
+        /* HOVER ACTIONS */
+        .product-hover-actions {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 20;
         }
 
-        .shop-page .load-more {
-            background: white;
-            border: 1px solid #ddd;
+        .product-card:hover .product-hover-actions {
+            opacity: 1;
+            visibility: visible;
+            bottom: 20px;
+        }
+
+        .add-to-cart-btn {
+            background: #000;
+            color: #fff;
+            border: none;
             padding: 12px 30px;
-            margin-top: 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: bold;
             cursor: pointer;
-            border-radius: 3px;
-            font-size: 14px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
-        .shop-page .load-more:hover {
+        .add-to-cart-btn:hover {
+            background: #333;
+        }
+
+        .action-icon-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .action-icon-btn:hover {
+            border-color: #000;
             background: #f5f5f5;
         }
+
+        /* LIST VIEW */
+        .view-list .product-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .view-list .product-image-wrapper {
+            background: #f8f8f8;
+        }
+
+        .view-list .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            padding: 20px;
+        }
+
+        .view-list .product-info {
+            padding: 0;
+        }
+
+        .view-list .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            min-height: auto;
+            margin-bottom: 12px;
+        }
+
+        .view-list .product-category {
+            order: -1;
+            margin-bottom: 12px;
+        }
+
+        .view-list .product-price {
+            margin-bottom: 15px;
+        }
+
+        .view-list .price-current {
+            font-size: 22px;
+        }
+
+        .view-list .wishlist-btn {
+            top: 30px;
+            left: 30px;
+            right: auto;
+        }
+
+        .view-list .badge-container {
+            flex-direction: row;
+            top: auto;
+            bottom: 30px;
+            left: 30px;
+        }
+
+        .view-list .product-hover-actions {
+            display: none;
+        }
+
+        .view-list .product-card:hover {
+            transform: none;
+        }
+
+        .product-description {
+            display: none;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .view-list .product-description {
+            display: block;
+        }
+
+        .product-actions {
+            display: none;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .view-list .product-actions {
+            display: flex;
+        }
+
+        /* PAGINATION */
+        .pagination {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .showing-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 300px;
+            height: 3px;
+            background-color: #e0e0e0;
+            margin: 0 auto 20px;
+        }
+
+        .progress-fill {
+            width: 43%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        .load-more {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 12px 40px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .load-more:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .view-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .view-list .product-card {
+                grid-template-columns: 1fr;
+            }
+
+            .view-list .product-image {
+                width: 100%;
+                height: 300px;
+            }
+        }
     </style>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-50">
-
-    <div class="bg-white border-b border-gray-100">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            
-            <div class="text-3xl font-black uppercase tracking-widest text-black">
-                Automize
-            </div>
-            
-            <!-- THANH DIEU HUONG -->
-            <nav class="hidden lg:flex space-x-8 font-semibold text-gray-700 text-sm">
-                <!-- HOMEPAGE -->
-                <div class="group relative h-full flex items-center">
-    
-                    <a href="#" class="text-red-600 flex items-center gap-1 py-4">
-                        Home <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
-                    </a>
-
-                    <div class="absolute top-full left-0 w-64 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
-                        
-                        <ul class="py-3 text-sm text-gray-500 font-normal">
-                            
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 01</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 02</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 03</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 04</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 05</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 06</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 07</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 08</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 09</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 10</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 11</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Homepage Automize 12</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-                
-                    <div class="group relative h-full flex items-center font-bold">
-                
-                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4 ">
-                        Shop <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
-                    </a>
-
-                    <div class="absolute top-full -left-20 w-[1000px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
-                        
-                        <div class="grid grid-cols-4 gap-8 p-8 text-left">
-                            
-                            <div>
-                                <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
-                                <ul class="space-y-3 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Left Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Right Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Top Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Without Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Full Width</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
-                                <ul class="space-y-3 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Left</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Right</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Top</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Category Canvas On Bottom</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
-                                <ul class="space-y-3 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-red-600 transition">Numbered Pagination</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Load More Button</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Infinity Scroll Load More</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="relative flex items-end justify-center bg-gray-50 rounded-lg overflow-hidden h-full min-h-[200px]">
-                                <img src="https://img.freepik.com/free-photo/smiling-mechanic-with-arms-crossed_1187-1606.jpg?w=740" 
-                                    class="object-contain h-full w-full" alt="Mechanic">
-                                
-                                <div class="absolute bottom-4 right-4 bg-white/90 px-3 py-1 text-xs font-bold rounded shadow">
-                                    New Tires
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            <!-- PRODUCT -->
-                <div class="group relative h-full flex items-center font-bold">
-                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
-                        Product <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
-                    </a>
-
-                    <div class="absolute top-full -left-60 w-[1100px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
-                        
-                        <div class="grid grid-cols-4 gap-8 p-10 text-left">
-                            
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
-                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Left</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Top</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Bottom</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Thumbnail Right</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
-                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Image Slider</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Tab Accordion</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Image Scroll Left</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Image Scroll Right</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
-                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Show All Variants</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Video</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Sticky Add To Cart</a></li>
-                                    <li><a href="#" class="hover:text-red-600 transition">Product Deal Countdown</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h3 class="font-bold text-gray-900 mb-5 text-base">Best Selling</h3>
-                                
-                                <div class="border border-gray-100 rounded-lg p-4 flex gap-4 items-center hover:shadow-lg transition duration-300 cursor-pointer">
-                                    <div class="w-24 h-24 flex-shrink-0">
-                                        <img src="https://m.media-amazon.com/images/I/71w+mC+4bRL._AC_SL1500_.jpg" 
-                                            class="w-full h-full object-contain mix-blend-multiply" alt="Wheel">
-                                    </div>
-                                    
-                                    <div>
-                                        <div class="flex text-gray-200 text-xs mb-1">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <span class="text-gray-400 ml-1">(0)</span>
-                                        </div>
-                                        
-                                        <p class="text-xs text-gray-500 mb-2 line-clamp-2">
-                                            Curabitur id est vel nisi dictum rutrum...
-                                        </p>
-                                        
-                                        <div class="font-bold text-gray-900 text-lg">$190.00</div>
-                                    </div>
-                                </div>
-
-                                <div class="flex justify-center gap-2 mt-5">
-                                    <span class="w-2.5 h-2.5 rounded-full border border-red-600 flex items-center justify-center cursor-pointer">
-                                        <span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
-                                    </span>
-                                    <span class="w-2 h-2 rounded-full bg-gray-300 hover:bg-red-400 cursor-pointer transition"></span>
-                                    <span class="w-2 h-2 rounded-full bg-gray-300 hover:bg-red-400 cursor-pointer transition"></span>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PAGES -->
-                <div class="group relative h-full flex items-center font-bold">
-                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
-                        Pages <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
-                    </a>
-
-                    <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
-                        
-                        <ul class="py-4 text-sm text-gray-500 font-normal">
-                            
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Contact us</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">About us</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">FAQs Page</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Store Locations</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">404 Page</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Store Direction</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Testimonial</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Wishlist</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">My account</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Order Tracking</a></li>
-                            <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Checkout</a></li>
-
-                        </ul>
-
-                    </div>
-                </div>
-
-                <!-- BLOG -->
-                <div class="group relative h-full flex items-center font-bold">
-                    <a href="#" class="group-hover:text-red-600 flex items-center gap-1 py-4">
-                        Blog <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
-                    </a>
-
-                    <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
-                        
-                        <ul class="py-4 text-sm text-gray-800 font-bold">
-                            
-                            <li class="group/sub relative">
-                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
-                                    Blog Layout <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
-                                </a>
-                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
-                                    <ul class="py-4 text-gray-500 font-normal">
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Left Sidebar</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Right Sidebar</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Without Sidebar</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="group/sub relative">
-                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
-                                    Post Layout <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
-                                </a>
-                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
-                                    <ul class="py-4 text-gray-500 font-normal">
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Sidebar</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">One Column</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Parallax Image</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Simple Title</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="group/sub relative">
-                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
-                                    Blog Style <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
-                                </a>
-                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
-                                    <ul class="py-4 text-gray-500 font-normal">
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog List</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Blog Grid</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="group/sub relative">
-                                <a href="#" class="flex items-center justify-between px-6 py-3 hover:text-red-600 transition">
-                                    Blog Format <i class="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
-                                </a>
-                                <div class="absolute top-0 left-full ml-1 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 transform translate-x-4 group-hover/sub:translate-x-0">
-                                    <ul class="py-4 text-gray-500 font-normal">
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Post format video</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Post format audio</a></li>
-                                        <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Post format gallery</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-
-            </nav>
-
-            <div class="hidden xl:flex items-center space-x-6 text-sm font-semibold text-gray-600">
-                <a href="#" class="flex items-center gap-2 hover:text-red-600">
-                    <i class="fa-solid fa-truck-fast"></i> Track Your Order
-                </a>
-                <a href="#" class="flex items-center gap-2 hover:text-red-600">
-                    <i class="fa-solid fa-location-dot"></i> Store Locator
-                </a>
-                <div class="flex items-center gap-2 text-gray-800">
-                    <i class="fa-solid fa-phone"></i> 
-                    Call Us: <span class="text-red-600 font-bold">+(123)-456-7890</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-red-600 h-[70px]">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row items-center">
-
-                <!-- BROWSE -->
-                <div class="group relative min-w-[270px] h-full z-50">
-    
-            <div class="bg-white text-gray-900 h-full px-6 flex items-center gap-4 cursor-pointer border-r border-gray-100 relative z-50">
-                <i class="fa-solid fa-bars text-xl"></i>
-                <span class="font-extrabold text-sm uppercase tracking-wide">Browse All Categories</span>
-            </div>
-
-            <div class="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-40">
-                
-                <ul class="text-[15px] font-medium text-gray-800">
-                    
-                    <li class="group/sub relative"> 
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-lightbulb w-5 text-center text-gray-800 text-lg"></i> 
-                                Headlights & Lighting
-                            </div>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-
-                        <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-5 min-h-full">
-                            <div class="px-6">
-                                <h3 class="text-gray-400 font-bold mb-3 text-xs uppercase tracking-wider border-b border-gray-100 pb-2">
-                                    Headlights & Lighting
-                                </h3>
-                                
-                                <ul class="space-y-2 text-[14px] text-gray-600 font-medium">
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Multibeam Led</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Projector Headlights</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Chevrolet</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Peugeot</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Fog Lights</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Interior Lights</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="group/sub relative"> 
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-volume-high w-5 text-center text-gray-800 text-lg"></i>
-                                Car Audio Systems
-                            </div>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-
-                        <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-5 min-h-full">
-                            <div class="px-6">
-                                <h3 class="text-gray-400 font-bold mb-3 text-xs uppercase tracking-wider border-b border-gray-100 pb-2">
-                                    Car Audio Systems
-                                </h3>
-                                <ul class="space-y-2 text-[14px] text-gray-600 font-medium">
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Car Amplifier</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Car Speakers</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Car Starters</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Car Stereo</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Subwoofers</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="group/sub relative"> 
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-dharmachakra w-5 text-center text-gray-800 text-lg"></i>
-                                Tires & Wheels
-                            </div>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-
-                        <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-5 min-h-full">
-                            <div class="px-6">
-                                <h3 class="text-gray-400 font-bold mb-3 text-xs uppercase tracking-wider border-b border-gray-100 pb-2">
-                                    Tires & Wheels
-                                </h3>
-                                <ul class="space-y-2 text-[14px] text-gray-600 font-medium">
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Alloy Wheels</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Competition Tire</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Light Truck</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Passenger Car</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="group/sub relative"> 
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-dna w-5 text-center text-gray-800 text-lg -rotate-45"></i>
-                                Suspension
-                            </div>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-
-                        <div class="absolute top-0 left-full w-[260px] bg-white shadow-xl border-l border-gray-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-300 z-50 py-5 min-h-full">
-                            <div class="px-6">
-                                <h3 class="text-gray-400 font-bold mb-3 text-xs uppercase tracking-wider border-b border-gray-100 pb-2">
-                                    Suspension
-                                </h3>
-                                <ul class="space-y-2 text-[14px] text-gray-600 font-medium">
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Dampers</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Struts</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Springs</a></li>
-                                    <li><a href="#" class="block hover:text-red-600 hover:pl-1 transition-all">Wheel</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-screwdriver-wrench w-5 text-center text-gray-800 text-lg"></i>
-                                Tools & Equipment
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-oil-can w-5 text-center text-gray-800 text-lg"></i>
-                                Oil Car
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-compact-disc w-5 text-center text-gray-800 text-lg"></i>
-                                Brakes
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-shield-halved w-5 text-center text-gray-800 text-lg"></i>
-                                Auto Safety & Security
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-fan w-5 text-center text-gray-800 text-lg"></i>
-                                Automotive Rims
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-regular fa-clone w-5 text-center text-gray-800 text-lg"></i>
-                                Automotive Display
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition">
-                            <div class="flex items-center gap-4">
-                                <i class="fa-solid fa-car-battery w-5 text-center text-gray-800 text-lg"></i>
-                                Battery
-                            </div>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-                <div class="flex-1 w-full px-4 py-3">
-                    <div class="bg-white rounded-sm flex items-center h-12">
-                        <div class="hidden sm:flex relative group items-center px-4 border-r border-gray-200 text-xs font-bold text-gray-700 whitespace-nowrap cursor-pointer h-full hover:bg-gray-50">
-    
-                            <span>ALL CATEGORIES</span> 
-                            <i class="fa-solid fa-chevron-down ml-2 transition-transform duration-300 group-hover:rotate-180"></i>
-                            <div class="absolute top-full left-0 w-[220px] bg-white shadow-xl border-t-2 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60] text-left">
-                                <ul class="py-2 text-[13px] font-medium text-gray-600 max-h-[400px] overflow-y-auto">
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition font-bold">All Categories</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Home</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Accessories</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Automotive Rims</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Brakes</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Detailing</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Headlight</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">Tires & Wheels</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">-Automotive Display</a></li>
-                                    <li><a href="#" class="block px-5 py-2 hover:text-red-600 hover:bg-gray-50 transition">-Car Audio Systems</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <input type="text" placeholder="ENTER YOUR KEYWORD" class="flex-1 px-4 text-sm outline-none placeholder-gray-400 font-medium h-full">
-                        <button class="px-6 text-gray-500 hover:text-red-600 h-full">
-                            <i class="fa-solid fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="flex items-center space-x-6 px-6 py-3 text-white">
-                    
-                    <div class="flex items-center gap-3 cursor-pointer">
-                        <i class="fa-regular fa-user text-2xl"></i>
-                        <div class="leading-tight text-sm hidden lg:block">
-                            <div class="font-normal text-xs opacity-90">Account</div>
-                            <div class="font-bold">Hello, Login</div>
-                        </div>
-                    </div>
-
-                    <div class="relative cursor-pointer">
-                        <i class="fa-regular fa-heart text-2xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
-                    </div>
-
-                    <div class="relative cursor-pointer">
-                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-<section class="shop-page">
     <div class="container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -808,110 +656,14 @@
                     <span>(13)</span>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="steering">
-                    <label for="steering">Tires & Wheels</label>
+                    <input type="checkbox" id="tires-wheels">
+                    <label for="tires-wheels">Tires & Wheels</label>
                     <span>(7)</span>
                 </div>
             </div>
 
             <!-- Price Filter -->
             <div class="filter-section">
-
-                <style>
-                    .price-filter {
-                        font-family: Arial, sans-serif;
-                        font-size: 13px;
-                        width: 250px;
-                    }
-
-                    .price-filter-title {
-                        font-weight: 600;
-                        font-size: 14px;
-                        margin-bottom: 6px;
-                    }
-
-                    .price-slider-box {
-                        position: relative;
-                        height: 32px;
-                        margin-bottom: 8px;
-                    }
-
-                    /* track xám */
-                    .price-slider-track {
-                        position: absolute;
-                        top: 50%;
-                        left: 0;
-                        height: 4px;
-                        width: 100%;
-                        background: #dcdcdc;
-                        border-radius: 4px;
-                        transform: translateY(-50%);
-                    }
-
-                    /* track đen */
-                    .price-slider-range {
-                        position: absolute;
-                        top: 50%;
-                        height: 4px;
-                        background: #000;
-                        border-radius: 4px;
-                        transform: translateY(-50%);
-                    }
-
-                    .price-slider-box input[type=range] {
-                        position: absolute;
-                        width: 100%;
-                        height: 32px;
-                        margin: 0;
-                        pointer-events: none;
-                        background: transparent;
-                        -webkit-appearance: none;
-                    }
-
-                    .price-slider-box input[type=range]::-webkit-slider-runnable-track {
-                        background: transparent;
-                    }
-
-                    .price-slider-box input[type=range]::-webkit-slider-thumb {
-                        -webkit-appearance: none;
-                        pointer-events: auto;
-                        width: 16px;
-                        height: 16px;
-                        border-radius: 50%;
-                        border: 2px solid #000;
-                        background: #fff;
-                        cursor: pointer;
-                    }
-
-                    .price-labels {
-                        display: flex;
-                        justify-content: space-between;
-                        color: #444;
-                        font-size: 12px;
-                        margin-bottom: 8px;
-                    }
-
-                    .range-text {
-                        display: flex;
-                        align-items: center;
-                        font-size: 12px;
-                        gap: 6px;
-                        margin-bottom: 12px;
-                    }
-
-                    .filter-btn {
-                        border: 1px solid #ccc;
-                        background: #f7f7f7;
-                        font-size: 12px;
-                        padding: 6px 20px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    }
-
-                    .filter-btn:hover {
-                        background: #eee;
-                    }
-                </style>
             <div class="price-filter-title">Price</div>
 
             <div class="price-slider-box">
@@ -936,41 +688,6 @@
             <button class="filter-btn">FILTER</button>
             </div>
 
-            <script>
-                const min = document.getElementById('min');
-                const max = document.getElementById('max');
-                const range = document.querySelector('.price-slider-range');
-                const vmin = document.getElementById('vmin');
-                const vmax = document.getElementById('vmax');
-
-                function update() {
-                    let minVal = parseInt(min.value);
-                    let maxVal = parseInt(max.value);
-
-                    if(minVal > maxVal - 5){
-                        minVal = maxVal - 5;
-                        min.value = minVal;
-                    }
-                    if(maxVal < minVal + 5){
-                        maxVal = minVal + 5;
-                        max.value = maxVal;
-                    }
-
-                    const percentMin = (minVal / 220) * 100;
-                    const percentMax = (maxVal / 220) * 100;
-
-                    range.style.left = percentMin + "%";
-                    range.style.width = (percentMax - percentMin) + "%";
-
-                    vmin.textContent = minVal;
-                    vmax.textContent = maxVal;
-                }
-
-                min.oninput = update;
-                max.oninput = update;
-                update();
-            </script>
-
             <!-- Brands Filter -->
             <div class="filter-section">
                 <div class="filter-title">Brands</div>
@@ -990,18 +707,18 @@
                     <span>(4)</span>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="liqui">
-                    <label for="liqui">Lexus</label>
+                    <input type="checkbox" id="lexus">
+                    <label for="lexus">Lexus</label>
                     <span>(6)</span>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="liqui">
-                    <label for="liqui">Lotus</label>
+                    <input type="checkbox" id="lotus">
+                    <label for="lotus">Lotus</label>
                     <span>(4)</span>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="liqui">
-                    <label for="liqui">Toyota</label>
+                    <input type="checkbox" id="toyota">
+                    <label for="toyota">Toyota</label>
                     <span>(4)</span>
                 </div>
             </div>
@@ -1054,429 +771,6 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <style>
-                * {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                }
-
-                body {
-                    font-family: Arial, sans-serif;
-                    background-color: #f5f5f5;
-                    padding: 20px;
-                }
-
-                .main-content {
-                    max-width: 1400px;
-                    margin: 0 auto;
-                }
-
-                .toolbar {
-                    background-color: #fff;
-                    padding: 15px 0;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 20px;
-                    border-top: 1px solid #e0e0e0;
-                    border-bottom: 1px solid #e0e0e0;
-                }
-
-                .view-options {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                }
-
-                .view-btn {
-                    width: 42px;
-                    height: 42px;
-                    border: 1px solid #ddd;
-                    background-color: #fff;
-                    color: #666;
-                    font-size: 16px;
-                    cursor: pointer;
-                    border-radius: 3px;
-                    transition: all 0.3s;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .view-btn:hover {
-                    background-color: #f5f5f5;
-                    border-color: #999;
-                }
-
-                .view-btn.active {
-                    background-color: #000;
-                    color: #fff;
-                    border-color: #000;
-                }
-
-                .results-count {
-                    color: #666;
-                    margin-left: 15px;
-                    font-size: 14px;
-                }
-
-                .sort-select {
-                    padding: 10px 35px 10px 15px;
-                    border: 1px solid #ddd;
-                    background-color: #fff;
-                    border-radius: 3px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    color: #666;
-                    appearance: none;
-                    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-                    background-repeat: no-repeat;
-                    background-position: right 10px center;
-                    background-size: 16px;
-                }
-
-                .sort-select:focus {
-                    outline: none;
-                    border-color: #999;
-                }
-
-                /* Grid Layout - 3 sản phẩm mỗi hàng */
-                .products-grid {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 20px;
-                    transition: all 0.3s;
-                }
-
-                /* Layout 2 cột - 2 sản phẩm mỗi hàng */
-                .products-grid.view-2col {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 30px;
-                }
-
-                /* Layout danh sách - 1 sản phẩm mỗi hàng */
-                .products-grid.view-list {
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                }
-
-                .product-card {
-                    background: #fff;
-                    border-radius: 10px;
-                    overflow: visible;
-                    position: relative;
-                    transition: all 0.3s;
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                }
-
-                .product-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-                }
-
-                .product-image-wrapper {
-                    position: relative;
-                    overflow: hidden;
-                    border-radius: 10px 10px 0 0;
-                }
-
-                .wishlist-btn {
-                    position: absolute;
-                    top: 10px;
-                    right: 10px;
-                    width: 35px;
-                    height: 35px;
-                    border: none;
-                    background: #fff;
-                    border-radius: 50%;
-                    font-size: 20px;
-                    cursor: pointer;
-                    z-index: 10;
-                    transition: all 0.3s;
-                }
-
-                .wishlist-btn:hover {
-                    background: #ff4757;
-                    color: #fff;
-                }
-
-                .product-image {
-                    width: 100%;
-                    height: 300px;
-                    object-fit: cover;
-                }
-
-                .view-2col .product-image {
-                    height: 400px;
-                }
-
-                .product-info {
-                    padding: 20px;
-                }
-
-                .product-category {
-                    color: #888;
-                    font-size: 12px;
-                    font-weight: bold;
-                    margin-bottom: 8px;
-                }
-
-                .product-title {
-                    font-size: 16px;
-                    color: #333;
-                    margin-bottom: 10px;
-                    min-height: 40px;
-                }
-
-                .product-rating {
-                    margin-bottom: 10px;
-                }
-
-                .stars {
-                    color: #ffd700;
-                    font-size: 14px;
-                }
-
-                .rating-count {
-                    color: #888;
-                    font-size: 12px;
-                    margin-left: 5px;
-                }
-
-                .product-price {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .price-current {
-                    font-size: 20px;
-                    font-weight: bold;
-                    color: #e74c3c;
-                }
-
-                .price-old {
-                    font-size: 16px;
-                    color: #888;
-                    text-decoration: line-through;
-                }
-
-                .badge-container {
-                    position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 5px;
-                }
-
-                .badge {
-                    background: #e74c3c;
-                    color: #fff;
-                    padding: 5px 10px;
-                    border-radius: 3px;
-                    font-size: 11px;
-                    font-weight: bold;
-                }
-
-                /* List View Styling */
-                .view-list .product-card {
-                    display: grid;
-                    grid-template-columns: 280px 1fr;
-                    gap: 30px;
-                    align-items: center;
-                    padding: 20px;
-                }
-
-                .view-list .product-image-wrapper {
-                    background: #f8f8f8;
-                }
-
-                .view-list .product-image {
-                    width: 100%;
-                    height: 280px;
-                    flex-shrink: 0;
-                    object-fit: contain;
-                    padding: 20px;
-                }
-
-                .view-list .product-card:hover .product-image {
-                    transform: none;
-                }
-
-                .view-list .product-info {
-                    flex: 1;
-                    padding: 0;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                }
-
-                .view-list .product-title {
-                    font-size: 18px;
-                    font-weight: 600;
-                    min-height: auto;
-                    margin-bottom: 12px;
-                    line-height: 1.4;
-                }
-
-                .view-list .product-category {
-                    font-size: 11px;
-                    margin-bottom: 12px;
-                    order: -1;
-                }
-
-                .view-list .product-rating {
-                    margin-bottom: 12px;
-                }
-
-                .view-list .stars {
-                    font-size: 14px;
-                }
-
-                .view-list .rating-count {
-                    font-size: 13px;
-                }
-
-                .view-list .product-price {
-                    margin-bottom: 15px;
-                }
-
-                .view-list .price-current {
-                    font-size: 22px;
-                }
-
-                .view-list .price-old {
-                    font-size: 16px;
-                }
-
-                .view-list .wishlist-btn {
-                    top: 30px;
-                    left: 30px;
-                    right: auto;
-                }
-
-                .view-list .badge-container {
-                    flex-direction: row;
-                    top: auto;
-                    bottom: 30px;
-                    left: 30px;
-                }
-
-                .product-description {
-                    display: none;
-                    color: #666;
-                    font-size: 14px;
-                    line-height: 1.6;
-                    margin-bottom: 20px;
-                }
-
-                .view-list .product-description {
-                    display: block;
-                }
-
-                .product-actions {
-                    display: none;
-                    gap: 10px;
-                    align-items: center;
-                }
-
-                .view-list .product-actions {
-                    display: flex;
-                }
-
-                /* Hover actions for grid and 2col views */
-                .product-hover-actions {
-                    position: absolute;
-                    bottom: -60px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    display: flex;
-                    gap: 10px;
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: all 0.4s ease;
-                    z-index: 20;
-                }
-
-                .product-card:hover .product-hover-actions {
-                    opacity: 1;
-                    visibility: visible;
-                    bottom: 20px;
-                }
-
-                .view-list .product-hover-actions {
-                    display: none;
-                }
-
-                .add-to-cart-btn {
-                    background: #000;
-                    color: #fff;
-                    border: none;
-                    padding: 12px 30px;
-                    border-radius: 25px;
-                    font-size: 13px;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    white-space: nowrap;
-                }
-
-                .add-to-cart-btn:hover {
-                    background: #333;
-                }
-
-                .action-icon-btn {
-                    width: 40px;
-                    height: 40px;
-                    border: 1px solid #ddd;
-                    background: #fff;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: all 0.3s;
-                    flex-shrink: 0;
-                }
-
-                .action-icon-btn:hover {
-                    border-color: #000;
-                    background: #f5f5f5;
-                }
-
-                .view-list .product-card:hover {
-                    transform: none;
-                }
-
-                @media (max-width: 1024px) {
-                    .products-grid {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
-                    
-                    .view-2col {
-                        grid-template-columns: 1fr;
-                    }
-                }
-
-                @media (max-width: 768px) {
-                    .products-grid {
-                        grid-template-columns: 1fr;
-                    }
-
-                    .view-list .product-card {
-                        flex-direction: column;
-                    }
-
-                    .view-list .product-image {
-                        width: 100%;
-                        height: 300px;
-                    }
-                }
-                </style>
             <!-- Toolbar -->
             <div class="toolbar">
                 <div class="view-options">
@@ -1521,12 +815,12 @@
             </div>
 
             <!-- Products Grid -->
-            <div class="products-grid" id="productsGrid">
+            <div class="products-grid view-2col" id="productsGrid">
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image-wrapper">
                     <button class="wishlist-btn">♡</button>
-                    <img src="../style_image/z7305657291956_7e20e6bbb2130db5ec5f191c5733c8fa.jpg" alt="Car Seat" class="product-image">
+                    <img src="../style_image/chair.jpg" alt="Car Seat" class="product-image">
                         <div class="product-hover-actions">
                             <button class="add-to-cart-btn">ADD TO CART</button>
                             <button class="action-icon-btn" title="Compare">
@@ -2169,196 +1463,70 @@
                         </div>
                     </div>
                 </div>
-            <script>
-                function changeView(viewType) {
-                    const grid = document.getElementById('productsGrid');
-                    const buttons = document.querySelectorAll('.view-btn');
-                    
-                    // Remove active class from all buttons
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Remove all view classes
-                    grid.classList.remove('view-2col', 'view-list');
-                    
-                    // Add appropriate class and activate button
-                    if (viewType === '2col') {
-                        grid.classList.add('view-2col');
-                        buttons[1].classList.add('active');
-                    } else if (viewType === 'list') {
-                        grid.classList.add('view-list');
-                        buttons[2].classList.add('active');
-                    } else {
-                        buttons[0].classList.add('active');
-                    }
-                }
-            </script>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <style>
-                    .pagination {
-                        text-align: center;
-                        margin: 40px 0;
-                    }
-
-                    .showing-text {
-                        color: #666;
-                        font-size: 14px;
-                        margin-bottom: 15px;
-                    }
-
-                    .progress-bar {
-                        width: 100%;
-                        max-width: 300px;
-                        height: 3px;
-                        background-color: #e0e0e0;
-                        margin: 0 auto 20px;
-                    }
-
-                    .progress-fill {
-                        width: 43%;
-                        height: 100%;
-                        background-color: #000;
-                    }
-
-                    .load-more {
-                        background-color: #f5f5f5;
-                        border: 1px solid #ddd;
-                        padding: 12px 40px;
-                        font-size: 14px;
-                        cursor: pointer;
-                    }
-                </style>
-                <p class="showing-text">Showing 12 of 28 products</p>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
                 </div>
-                <button class="load-more">Load more items</button>
-            </div>
-        </main>
-    </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <p class="showing-text">Showing 12 of 28 products</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <button class="load-more">Load more items</button>
+                </div>
+            </main>
+        </div>
+        <script>
+        // Price slider
+        const min = document.getElementById('min');
+        const max = document.getElementById('max');
+        const range = document.querySelector('.price-slider-range');
+        const vmin = document.getElementById('vmin');
+        const vmax = document.getElementById('vmax');
+
+        function updatePriceSlider() {
+            let minVal = parseInt(min.value);
+            let maxVal = parseInt(max.value);
+
+            if(minVal > maxVal - 5){
+                minVal = maxVal - 5;
+                min.value = minVal;
+            }
+            if(maxVal < minVal + 5){
+                maxVal = minVal + 5;
+                max.value = maxVal;
+            }
+
+            const percentMin = (minVal / 220) * 100;
+            const percentMax = (maxVal / 220) * 100;
+
+            range.style.left = percentMin + "%";
+            range.style.width = (percentMax - percentMin) + "%";
+
+            vmin.textContent = minVal;
+            vmax.textContent = maxVal;
+        }
+
+        min.oninput = updatePriceSlider;
+        max.oninput = updatePriceSlider;
+        updatePriceSlider();
+
+        // View switcher
+        function changeView(viewType) {
+            const grid = document.getElementById('productsGrid');
+            const buttons = document.querySelectorAll('.view-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            grid.classList.remove('view-2col', 'view-list');
+            
+            if (viewType === '2col') {
+                grid.classList.add('view-2col');
+                buttons[1].classList.add('active');
+            } else if (viewType === 'list') {
+                grid.classList.add('view-list');
+                buttons[2].classList.add('active');
+            } else {
+                buttons[0].classList.add('active');
+            }
+        }
+    </script>
 </section>
-
-<footer class="w-full py-10 px-6 grid grid-cols-1 md:grid-cols-4 gap-12 bg-black text-white">
-  <div class="col-span-1">
-    <h1 class="text-4xl font-extrabold mb-4 text-red-600 tracking-wider"> 
-        <img src="style_image/logo.png" alt="logo" class="h-10"> 
-    </h1>
-    <p class="mb-8 text-sm text-gray-300">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-    </p>
-
-    <ul class="space-y-4 text-sm">
-      <li class="flex items-start space-x-3">
-        <span class="text-xl text-red-600">📞</span>
-        <div class="flex flex-col">
-          <span class="font-semibold">We're available by phone</span>
-          <span class="font-bold text-lg text-white transition-colors hover:text-red-500 cursor-pointer">+123-456-789</span>
-        </div>
-      </li>
-      <li class="flex items-start space-x-3">
-        <span class="text-xl text-red-600">📧</span>
-        <span class="transition-colors hover:text-red-500 cursor-pointer">info@example.com</span>
-      </li>
-      <li class="flex items-start space-x-3">
-        <span class="text-xl text-red-600">🕒</span>
-        <span>Monday till Friday 10 to 6 EST</span>
-      </li>
-    </ul>
-  </div>
-
-  <div>
-    <h2 class="text-lg font-semibold mb-4 text-red-600 transition-colors hover:text-red-500">HELP & SUPPORT</h2>
-    <ul class="space-y-2 text-sm">
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Shipping Info</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Returns</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">How To Order</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">How To Track</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Size Guide</li>
-    </ul>
-  </div>
-
-
-  <div>
-    <h2 class="text-lg font-semibold mb-4 text-red-600 transition-colors hover:text-red-500">COMPANY INFO</h2>
-    <ul class="space-y-2 text-sm">
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">About Us</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Our Blog</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Careers</li>
-      <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Store Locations</li>
-<li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Testimonial</li>
-    </ul>
-  </div>
-
-
-  <div>
-    <h2 class="text-lg font-semibold mb-4 text-red-600 transition-colors hover:text-red-500">CUSTOMER CARE</h2>
-    <ul class="space-y-2 text-sm">
-        <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Contact Us</li>
-        <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">FAQ</li>
-<li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Privacy Policy</li>
-        <li class="transition-transform hover:translate-x-1 hover:text-red-500 cursor-pointer">Terms of Service</li>
-    </ul>
-  </div>
-
-
-<div class="col-span-full mt-10 border-t border-gray-700 pt-6">
-    
-    <div class="border border-gray-700 rounded-xl p-6"> 
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            
-            <div>
-                <p class="font-semibold mb-4 tracking-wide">FOLLOW US :</p>
-                <div class="flex space-x-6 text-black">
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-blue-600 hover:text-white cursor-pointer">
-                        <a href="[Link Facebook]"><i class="fa-brands fa-facebook-f"></i></a>
-                    </div>
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-red-600 hover:text-white cursor-pointer">
-                        <a href="[Link Pinterest]"><i class="fa-brands fa-pinterest-p"></i></a>
-                    </div>
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:hover:bg-black hover:text-white cursor-pointer">
-                        <a href="[Link Twitter]"><i class="fa-brands fa-twitter"></i></a>
-                    </div>
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-blue-500 hover:text-white cursor-pointer">
-                        <a href="[Link Vimeo]"><i class="fa-brands fa-vimeo-v"></i></a>
-                    </div>
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 hover:bg-black hover:text-white cursor-pointer">
-                        <a href="[Link TikTok]"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex flex-col items-center md:items-end text-sm text-gray-500 space-y-4 pt-6 md:pt-0">
-                
-                <div class="flex space-x-3 w-full justify-center md:justify-start">
-                   <h5 class="text-gray-600 font-extrabold">DOWNLOAD APP MOBILE: </h5> 
-                    <img src="style_image/google-play.png" 
-                        alt="Google Play" 
-                        class="h-14 w-auto **max-w-[1200px]**"
-                    >
-                    
-                    <img 
-                        src="style_image/apple-store.png" 
-                        alt="App Store" 
-                        class="h-14 w-auto **max-w-[1200px]**"
-                    >
-                </div>
-              
-                
-            </div>
-        </div>
-        
-    </div>
-      
-                <div class="text-center md:text-left">
-                    Copyright © 2024 RisingBamboo. All Rights Reserved.
-                </div>
-</div>
-  <p>Trần Minh Tú 6551071094</p>
-  <p>Phạm Ngọc Tú 6551071092</p>
-  <p>Nguyễn Ngọc Ngà 65510710956</p>
-  <p>Trần Thảo Nương 6551071060</p>
-</footer>
-</body>
