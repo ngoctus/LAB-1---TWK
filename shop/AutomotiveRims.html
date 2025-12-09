@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automize 10 - Automize</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+        .bg-automize-red { background-color: #d3150b; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <div id="header-placeholder"></div>
+
+    <script>
+        // Hàm load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi khi load header:', error));
+    </script>
+
+  <section class="about-banner relative w-full h-[300px] flex items-center justify-center">
+  <!-- Background -->
+  <img src="style_image/extracted_bg.png" class="absolute inset-0 w-full h-full object-cover" />
+
+  <!-- Overlay mờ (nếu muốn giống Web mẫu hơn) -->
+  <div class="absolute inset-0 bg-white/40"></div>
+
+  <!-- Text -->
+  <div class="relative text-center">
+    <h1 class="text-4xl font-bold text-[#111] tracking-wide mb-3">AUTOMOTIVE RIMS</h1>
+
+    <div class="flex items-center justify-center gap-2 text-sm text-gray-700">
+      <a href="#" class="hover:text-red-600 transition">Home</a>
+      <span>›</span>
+      <p class="text-black font-medium">Automotive Rims</p>
+    </div>
+  </div>
+
+  <!-- Viền vàng trên cùng -->
+  <div class="absolute top-0 left-0 w-full h-[4px] bg-yellow-400"></div>
+</section>
+ 
+<section>
+  <iframe src="body.html" class="w-full h-[600px]" frameborder="0"></iframe>
+</section>
+
+
+<section class="w-full bg-gray-100 h-100 py-10 px-6 md:px-12  "> 
+  <h2 class="text-xl font-semibold mb-6">ALL TAGS :</h2>
+
+  <div class="flex flex-wrap gap-4">
+    
+    <!-- Tag -->
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Aston Martin
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Audi
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      BMW
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Ducati (4)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Ferrari
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Honda
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Hyundai (7)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Kia (7)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Lamborghini (7)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Lotus
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Mazda
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Mercedes-Benz
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Morgan
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Porsche
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Suzuki
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Tesla
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Toyota (6)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Triumph (7)
+    </div>
+  </div>
+</section>
+<section>
+  <div>
+    <div class="py-10 px-6 md:px-12 bg-gray-100 ">
+        <h2 class="text-2xl font-bold mb-4">Automotive Rims</h2>
+        <p>
+        Morbi et justo at enim rutrum molestie sit amet a purus. Quisque vel justo et diam dapibus viverra id vitae ligula. Cras pharetra arcu semper, interdum purus sed, molestie mauris. Phasellus gravida molestie pulvinar. Pellentesque suscipit vulputate diam luctus egestas. Nam dapibus felis ipsum, rutrum fermentum augue bibendum a. Rissing Bamboo sem. Quisque ac turpis velit. Pellentesque scelerisque condimentum diam, et ultrices tellus aliquam vitae. Proin ut purus pellentesque, porta arcu sit amet, consequat eros. Praesent feugiat, arcu in porta euismod, lorem magna mattis erat, sed volutpat libero sem in elit. Cras quis risus eget metus eleifend dapibus. Etiam pharetra semper justo, ut porta justo condimentum sit amet. Curabitur sodales
+        </p>
+
+        <!-- Nội dung ẩn -->
+        <div id="extraContent" class="hidden mt-4">
+          <p>
+              facilisis nisi. Etiam at dolor ut turpis porta dict urus eget pulvinar. Quisque non enim mollis, ultricies quam efficitur, efficitur nunc. Mauris sollicitudin, est nec volutpat placerat, ex quam dignissim risus, et aliquam lacus ante vitae nulla. Suspendisse mattis luctus nulla, quis tincidunt erat aliquam auctor. Fusce non felis pellentesque nisl egestas ornare non in enim. Duis sed purus a tellus tempor pharetra. Suspendisse vel velit nec mauris mattis maximus in sed ipsum. Nulla eu augue in mauris porttitor tincidunt in non metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam a laoreet sapien, vel tristique risus. Fusce rhoncus, nibh vel pharetra suscipit, odio justo consectetur mi, sit amet ullamcorper ex nulla ac elit. Phasellus feugiat mi augue, eu convallis nisi iaculis nec.
+          </p>
+        </div>
+    
+      <div class="text-center">
+        <!-- Nút toggle-->
+          <button id="toggleButton" onclick="toggleContent()" class="mt-4 bg-gray-100 text-black text-xs px-6 py-2 rounded-full hover:bg-gray-50 transition duration-300">
+            SEE MORE +
+          </button>
+   
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleContent() {
+    const content = document.getElementById("extraContent");
+    const button = document.getElementById("toggleButton");
+    content.classList.toggle("hidden");
+    button.textContent = content.classList.contains("hidden") ? "SEE MORE +" : "SEE LESS -";
+  }
+</script>
+
+</body>
+</html>

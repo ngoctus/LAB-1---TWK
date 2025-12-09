@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automize 10 - Automize</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+        .bg-automize-red { background-color: #d3150b; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <div id="header-placeholder"></div>
+
+    <script>
+        // Hàm load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi khi load header:', error));
+    </script>
+    
+  <section class="about-banner relative w-full h-[300px] flex items-center justify-center">
+  <!-- Background -->
+  <img src="style_image/extracted_bg.png" class="absolute inset-0 w-full h-full object-cover" />
+
+  <!-- Overlay mờ (nếu muốn giống Web mẫu hơn) -->
+  <div class="absolute inset-0 bg-white/40"></div>
+
+  <!-- Text -->
+  <div class="relative text-center">
+    <h1 class="text-4xl font-bold text-[#111] tracking-wide mb-3">SHOP</h1>
+
+    <div class="flex items-center justify-center gap-2 text-sm text-gray-700">
+      <a href="#" class="hover:text-red-600 transition">Home</a>
+      <span>›</span>
+      <p class="text-black font-medium">SHOP</p>
+    </div>
+  </div>
+
+  <!-- Viền vàng trên cùng -->
+  <div class="absolute top-0 left-0 w-full h-[4px] bg-yellow-400"></div>
+</section>
+ 
+<!-- Categories carousel (added) -->
+<section class="container mx-auto px-4 py-6 -mt-8"> 
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  <div class="relative">
+    <!-- Left arrow (always visible) -->
+    <button id="cat-left" aria-label="Previous" class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg absolute left-20 top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-20">
+      <i class="fa-solid fa-chevron-left text-gray-600"></i>
+    </button>
+
+    <!-- Right arrow (always visible) -->
+    <button id="cat-right" aria-label="Next" class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg absolute right-20 top-1/2 transform -translate-y-1/2 translate-x-1/2 z-20">
+      <i class="fa-solid fa-chevron-right text-gray-600"></i>
+    </button>
+
+    <!-- Viewport that shows exactly 5 thumbnails -->
+    <div id="categories-viewport" class="mx-auto overflow-hidden py-6">
+      <div id="categories" class="flex gap-8 items-center transition-transform duration-500">
+
+        <!-- Card 1 -->
+        <a href="Accessories.html" class="min-w-[200px] max-w-[200px] flex-shrink-0 text-center group block cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg p-3 transition-shadow duration-300 group-hover:shadow-2xl">
+            <img src="style_image/Accessories.png" alt="Accessories" class="w-full h-36 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h3 class="mt-3 font-semibold text-lg">Accessories</h3>
+          <p class="text-sm text-gray-500">7 Products</p>
+        </a>
+
+        <!-- Card 2 -->
+         <a href="AutomotiveRims.html" class="min-w-[200px] max-w-[200px] flex-shrink-0 text-center group block cursor-pointer">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg p-3 transition-shadow duration-300 group-hover:shadow-2xl">
+              <img src="style_image/AutomotiveRims.png" alt="Automotive Rims" class="w-full h-36 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105">
+            </div>
+            <h3 class="mt-3 font-semibold text-lg">Automotive Rims</h3>
+            <p class="text-sm text-gray-500">12 Products</p>
+          </a>
+        <!-- Card 3 -->
+        <a href="Brakes.html" class="min-w-[200px] max-w-[200px] flex-shrink-0 text-center group block cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg p-3 transition-shadow duration-300 group-hover:shadow-2xl">
+            <img src="style_image/Brakes.png" alt="Brakes" class="w-full h-36 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h3 class="mt-3 font-semibold text-lg">Brakes</h3>
+          <p class="text-sm text-gray-500">10 Products</p>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="Detailing.html" class="min-w-[200px] max-w-[200px] flex-shrink-0 text-center group block cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg p-3 transition-shadow duration-300 group-hover:shadow-2xl">
+            <img src="style_image/Detailing.png" alt="Detailing" class="w-full h-36 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h3 class="mt-3 font-semibold text-lg">Detailing</h3>
+          <p class="text-sm text-gray-500">14 Products</p>
+        </a>
+        <!-- Card 5 -->
+        <a href="Headlight.html" class="min-w-[200px] max-w-[200px] flex-shrink-0 text-center group block cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg p-3 transition-shadow duration-300 group-hover:shadow-2xl">
+            <img src="style_image/Headlight.png" alt="Headlight" class="w-full h-36 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h3 class="mt-3 font-semibold text-lg">Headlight</h3>
+          <p class="text-sm text-gray-500">10 Products</p>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="Tires&Wheels.html" class="min-w-[200px] max-w-[200px] flex-shrink-0 text-center group block cursor-pointer">
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg p-3 transition-shadow duration-300 group-hover:shadow-2xl">
+            <img src="style_image/Tires&Wheels.png" alt="Tires & Wheels" class="w-full h-36 object-cover rounded-xl transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <h3 class="mt-3 font-semibold text-lg">Tires & Wheels</h3>
+          <p class="text-sm text-gray-500">13 Products</p>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const viewport = document.getElementById('categories-viewport');
+      const track = document.getElementById('categories');
+      const left = document.getElementById('cat-left');
+      const right = document.getElementById('cat-right');
+      const cards = Array.from(track.children);
+      const visible = 5;
+      let index = 0;
+
+      function update(){
+        if(!cards.length) return;
+        const cardRect = cards[0].getBoundingClientRect();
+        const gap = parseFloat(getComputedStyle(track).gap) || 32;
+        const cardWidth = Math.round(cardRect.width);
+        // set viewport width to exactly visible cards
+        viewport.style.width = (visible * cardWidth + (visible - 1) * gap) + 'px';
+
+        const maxIndex = Math.max(0, cards.length - visible);
+        index = Math.min(Math.max(0, index), maxIndex);
+        const move = index * (cardWidth + gap);
+        track.style.transform = `translateX(-${move}px)`;
+
+        left.disabled = index <= 0;
+        right.disabled = index >= maxIndex;
+        left.classList.toggle('opacity-50', left.disabled);
+        right.classList.toggle('opacity-50', right.disabled);
+      }
+
+      window.addEventListener('load', update);
+      window.addEventListener('resize', ()=>{
+        // slight delay to allow reflow
+        setTimeout(update, 60);
+      });
+
+      left.addEventListener('click', ()=>{ index = Math.max(0, index - 1); update(); });
+      right.addEventListener('click', ()=>{ index = Math.min(cards.length - visible, index + 1); update(); });
+    })();
+  </script>
+</section>
+
+<section>
+  <iframe src="body.html" class="w-full h-[600px]" frameborder="0"></iframe>
+</section>
+
+<section class="w-full bg-gray-100 h-100 py-10 px-6 md:px-12  "> 
+  <h2 class="text-xl font-semibold mb-6">ALL TAGS :</h2>
+
+  <div class="flex flex-wrap gap-4">
+    
+    <!-- Tag -->
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Aston Martin
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Audi
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      BMW
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Ducati (4)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Ferrari
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Honda
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Hyundai (7)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Kia (7)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Lamborghini (7)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Lotus
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Mazda
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Mercedes-Benz
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Morgan
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Porsche
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Suzuki
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Tesla
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Toyota (6)
+    </div>
+
+    <div class="px-6 py-3 bg-white rounded-lg shadow hover:bg-black hover:text-white 
+                cursor-pointer transition-all duration-300">
+      Triumph (7)
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
