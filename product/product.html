@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page Complete</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Tab Active */
+        .tab-active {
+            background-color: white;
+            color: #1f2937;
+            font-weight: 700;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            padding: 12px 24px;
+            position: relative;
+            z-index: 10;
+        }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: white;
+        }
+
+        /* CSS Tab Inactive - Shadow Inset */
+        .tab-inactive {
+            background-color: #e5e7eb;
+            color: #4b5563;
+            font-weight: 600;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            padding: 12px 24px;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1); 
+        }
+        .tab-inactive:hover {
+            background-color: #d1d5db;
+        }
+
+        /* Custom Checkbox */
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            height: 1rem;
+            width: 1rem;
+            border: 1px solid #d1d5db;
+            background-color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-right: 0.5rem;
+        }
+        .custom-checkbox:checked {
+            background-color: black;
+            border-color: black;
+        }
+        .custom-checkbox:checked::after {
+            content: '\2713';
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            position: absolute;
+        }
+
+        /* Input Styles */
+        .custom-input {
+            width: 100%;
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .custom-input:hover, .custom-input:focus {
+            border-color: black;
+        }
+        
+        /* Table Styles */
+        .info-row {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Ẩn thanh cuộn */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-white text-gray-700 font-sans">
+    <div id="header-placeholder"></div>
+
+    <script>
+        // Hàm load header
+        fetch('../header_2.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi khi load header:', error));
+    </script>
+    <div class="p-8 max-w-6xl mx-auto">
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+    
+            <div>
+                <div class="border border-gray-200 rounded-lg p-4 mb-4 relative group">
+                    <div class="w-full aspect-square bg-white flex items-center justify-center rounded-lg overflow-hidden">
+                        <img id="main-image" 
+                            src="../style_image/1-22-600x600.jpg" 
+                            class="w-full h-full object-cover transition-opacity duration-300">
+                    </div>
+                    <button class="absolute top-4 right-4 bg-white p-2 rounded-full shadow hover:bg-gray-100 text-gray-500">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                </div>
+
+                <div class="flex space-x-3 overflow-x-auto hide-scrollbar pb-2">
+                    
+                    <div onclick="changeImage(this, '../style_image/1-22-600x600.jpg')" 
+                        class="thumb-item w-20 h-20 border-2 border-red-500 rounded p-1 cursor-pointer flex-shrink-0">
+                        <img src="../style_image/1-22-600x600.jpg" class="w-full h-full object-cover rounded">
+                    </div>
+
+                    <div onclick="changeImage(this, '../style_image/2-22-600x600.jpg')" 
+                        class="thumb-item w-20 h-20 border border-gray-200 rounded p-1 cursor-pointer flex-shrink-0 hover:border-gray-400">
+                        <img src="../style_image/2-22-600x600.jpg" class="w-full h-full object-cover rounded">
+                    </div>
+
+                    <div onclick="changeImage(this, '../style_image/3-4.png')" 
+                        class="thumb-item w-20 h-20 border border-gray-200 rounded p-1 cursor-pointer flex-shrink-0 hover:border-gray-400">
+                        <img src="../style_image/3-4.png" class="w-full h-full object-cover rounded">
+                    </div>
+
+                    <div onclick="changeImage(this, '../style_image/2-21-600x600.jpg')" 
+                        class="thumb-item w-20 h-20 border border-gray-200 rounded p-1 cursor-pointer flex-shrink-0 hover:border-gray-400">
+                        <img src="../style_image/2-21-600x600.jpg" class="w-full h-full object-cover rounded">
+                    </div>
+
+                    <div onclick="changeImage(this, '../style_image/1-21-700x700.jpg')" 
+                        class="thumb-item w-20 h-20 border border-gray-200 rounded p-1 cursor-pointer flex-shrink-0 hover:border-gray-400">
+                        <img src="../style_image/1-21-700x700.jpg" class="w-full h-full object-cover rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2 leading-tight">
+                    Curabitur ultrices enim ut nunc commodo semper suscipit
+                </h1>
+
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400 text-sm mr-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-gray-500 text-sm">(1 customer review)</span>
+                </div>
+
+                <div class="mb-4 flex items-center">
+                    <span class="text-3xl font-bold text-black mr-3">$100.00</span>
+                    <span class="text-xl text-gray-400 line-through font-normal">$140.00</span>
+                </div>
+
+                <p class="text-gray-600 text-[15px] mb-6 leading-relaxed">
+                    Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.
+                </p>
+
+                <div class="flex items-center text-green-500 font-medium mb-6">
+                    <i class="far fa-check-circle mr-2"></i> 15 in stock
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <div class="flex items-center border border-gray-300 rounded-full h-12 w-32 px-4 justify-between">
+                        <button class="text-gray-500 hover:text-black focus:outline-none text-xl">-</button>
+                        <input type="text" value="1" class="w-10 text-center border-none focus:ring-0 font-bold text-gray-700 bg-transparent outline-none">
+                        <button class="text-gray-500 hover:text-black focus:outline-none text-xl">+</button>
+                    </div>
+
+                    <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold h-12 rounded-full uppercase tracking-wider transition-colors px-6">
+                        Add to cart
+                    </button>
+
+                    <button class="h-12 w-12 border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 hover:border-black transition-colors">
+                        <i class="fas fa-heart text-gray-400 hover:text-black"></i>
+                    </button>
+                </div>
+
+                <button class="w-full border-2 border-gray-200 bg-white hover:border-black hover:bg-gray-50 text-gray-900 font-bold h-12 rounded-full uppercase tracking-wider transition-all mb-8">
+                    Buy it now
+                </button>
+
+                <div class="flex items-center space-x-6 text-sm text-gray-500 mb-8">
+                    <button class="flex items-center hover:text-black transition-colors">
+                        <i class="fas fa-exchange-alt mr-2"></i> Compare
+                    </button>
+                    <button class="flex items-center hover:text-black transition-colors">
+                        <i class="far fa-question-circle mr-2"></i> Ask a Question
+                    </button>
+                    <button class="flex items-center hover:text-black transition-colors">
+                        <i class="fas fa-share-alt mr-2"></i> Social Share
+                    </button>
+                </div>
+
+                <div class="bg-gray-50 rounded p-5 mb-8 border border-gray-100">
+                    <p class="text-center text-sm font-bold text-gray-800 mb-3">Guarantee safe & secure checkout</p>
+                    <div class="flex justify-center items-center gap-3 text-3xl text-gray-600">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-discover"></i>
+                    </div>
+                </div>
+
+                <div class="space-y-2 text-sm text-gray-600">
+                    <div class="flex items-center">
+                        <i class="far fa-clock w-5 mr-2"></i> 
+                        <span>Estimated Delivery : <span class="text-gray-800 font-medium">12 - 13 Dec, 2025</span></span>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-truck w-5 mr-2"></i>
+                        <span>Free Shipping & Returns : <span class="text-gray-800">On all order over $200.00</span></span>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-4 mt-4 space-y-1">
+                        <p><span class="font-bold text-gray-800 min-w-[100px] inline-block">SKU:</span> Woo-Album-2</p>
+                        <p><span class="font-bold text-gray-800 min-w-[100px] inline-block">Categories:</span> Accessories, Detailing, Headlight</p>
+                        <p><span class="font-bold text-gray-800 min-w-[100px] inline-block">Tags:</span> Ducati, Hyundai, Kia, Lamborghini, Toyota, Triumph</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex items-end space-x-2 border-b-2 border-gray-200 pt-6">
+            <button onclick="openTab('description')" id="btn-description" class="tab-active text-base">Description</button>
+            <button onclick="openTab('additional')" id="btn-additional" class="tab-inactive text-base transition-colors duration-200">Additional information</button>
+            <button onclick="openTab('reviews')" id="btn-reviews" class="tab-inactive text-base transition-colors duration-200">Reviews (1)</button>
+        </div>
+
+        <div class="pt-8 min-h-[300px]">
+            <div id="content-description" class="block text-[15px] leading-7 text-gray-500">
+                <p class="mb-5">Donec dapibus tellus sem, quis aliquam libero pharetra non. Nam vitae fermentum leo. Pellentesque bibendum dui eu mi tempor sodales. Integer gravida odio in sem laoreet tempus. Nunc vehicula nibh mauris, id bibendum metus facilisis iaculis. Phasellus suscipit dictum lacus ut enim auctor. Duis commodo faucibus lectus, et accumsan quam egestas at. Praesent eros mi, condimentum sit amet felis quis, hendrerit ullamcorper turpis. Etiam vel cursus elit, ut semper velit. Aenean sagittis leo massa, fermentum sollicitudin sem facilisis vel. Suspendisse potenti. Fusce porta tincidunt interdum.</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">About this item</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full border border-gray-400 mr-3 shrink-0"></span>8 Spoke Design w/ Milled Aluminum Accents.</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full border border-gray-400 mr-3 shrink-0"></span>Single Piece Aluminum Construction.</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full border border-gray-400 mr-3 shrink-0"></span>RC Carbon Fiber Center Cap.</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full border border-gray-400 mr-3 shrink-0"></span>Matte Black Coat w/ Machined Accents.</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 rounded-full border border-gray-400 mr-3 shrink-0"></span>Backed by Rough Countrys Limited Lifetime Replacement Warranty.</li>
+                </ul>
+            </div>
+            
+            <div id="content-additional" class="hidden">
+                <div class="info-row">
+                    <div class="font-bold text-gray-700 w-[150px]">Size</div>
+                    <div class="text-gray-500">16 Inch, 18 Inch, 19 Inch, 20 Inch</div>
+                </div>
+            </div>
+
+            <div id="content-reviews" class="hidden">
+                <div class="flex space-x-5 mb-12">
+                    <div class="w-[60px] h-[60px] bg-gray-200 rounded-full flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-user text-white text-2xl"></i>
+                    </div> 
+                    <div class="flex-1">
+                        <div class="flex items-center text-yellow-400 text-xs mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="mb-3">
+                            <span class="font-bold text-gray-900 text-sm uppercase">Admin</span> 
+                            <span class="text-gray-400 text-xs ml-1">— NOVEMBER 28, 2022</span>
+                        </div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Vì admin siêu cấp đẹp trai nên bạn hãy mua món đắt nhất!</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 uppercase">ADD A REVIEW</h3>
+                    <p class="text-gray-500 text-sm mb-6">Your email address will not be published. Required fields are marked <span class="text-red-500">*</span></p>
+                    <form class="space-y-5">
+                        <div class="flex flex-col">
+                            <label class="text-sm font-bold text-gray-600 mb-2">Your rating <span class="text-red-500">*</span></label>
+                            <div class="flex space-x-1 text-lg" id="star-container">
+                                <i class="fas fa-star text-gray-300 cursor-pointer transition-colors" onclick="setRating(1)" onmouseover="hoverRating(1)" onmouseout="resetRating()"></i>
+                                <i class="fas fa-star text-gray-300 cursor-pointer transition-colors" onclick="setRating(2)" onmouseover="hoverRating(2)" onmouseout="resetRating()"></i>
+                                <i class="fas fa-star text-gray-300 cursor-pointer transition-colors" onclick="setRating(3)" onmouseover="hoverRating(3)" onmouseout="resetRating()"></i>
+                                <i class="fas fa-star text-gray-300 cursor-pointer transition-colors" onclick="setRating(4)" onmouseover="hoverRating(4)" onmouseout="resetRating()"></i>
+                                <i class="fas fa-star text-gray-300 cursor-pointer transition-colors" onclick="setRating(5)" onmouseover="hoverRating(5)" onmouseout="resetRating()"></i>
+                            </div>
+                            <input type="hidden" id="rating-value" name="rating" value="0">
+                        </div>
+                        <div>
+                            <label for="review" class="block text-sm font-bold text-gray-600 mb-2">Your review <span class="text-red-500">*</span></label>
+                            <textarea id="review" name="review" rows="5" class="custom-input"></textarea>
+                        </div>
+                        <div>
+                            <label for="name" class="block text-sm font-bold text-gray-600 mb-2">Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" name="name" class="custom-input">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-bold text-gray-600 mb-2">Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" name="email" class="custom-input">
+                        </div>
+                        <div class="flex items-center">
+                            <input id="save-info" name="save-info" type="checkbox" class="custom-checkbox">
+                            <label for="save-info" class="text-sm text-gray-500">Save my name, email, and website in this browser for the next time I comment.</label>
+                        </div>
+                        <div class="pt-2">
+                            <button type="button" class="w-full bg-black text-white text-xs font-bold py-4 px-10 uppercase tracking-wider hover:bg-[#ce0000] transition-colors duration-300">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- cái bảng ss -->
+            <div class="mt-20 text-center">
+                <div class="max-w-7xl mx-auto mt-16 mb-20 px-4">
+                    <h2 class="text-3xl font-bold text-gray-900 text-center mb-10">Quick Comparison</h2>
+
+                    <div class="overflow-x-auto border border-gray-200 bg-white shadow-sm">
+                        <table class="w-full text-sm text-left text-gray-500 min-w-[1500px] table-fixed">
+                            <thead>
+                                <tr class="bg-gray-50 border-b border-gray-200">
+                                    <th class="sticky left-0 z-30 w-[200px] p-4 bg-gray-50 border-r border-gray-200"></th>
+                                    <th class="sticky left-[200px] z-30 w-[250px] p-4 font-bold text-gray-800 align-top leading-tight bg-gray-50 border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Curabitur Ultrices Enim Ut Nunc Commodo Semper Suscipit</th>
+                                    <th class="w-[250px] p-4 font-bold text-gray-800 align-top leading-tight">Aenean Tempus Orci Non Felis Pharetra Scelerisque Dapibus</th>
+                                    <th class="w-[250px] p-4 font-bold text-gray-800 align-top leading-tight">Etiam Tristique Nisi Odio Posuere Aliquam Dui Venenatis</th>
+                                    <th class="w-[250px] p-4 font-bold text-gray-800 align-top leading-tight">Vivamus Sed Dui Non Ligula Bibendum Dictum In Ut Quam</th>
+                                    <th class="w-[250px] p-4 font-bold text-gray-800 align-top leading-tight">Fusce Dapibus Tellus Ac Cursus Commodo Tortor Mauris</th>
+                                    <th class="w-[250px] p-4 font-bold text-gray-800 align-top leading-tight">Donec Id Elit Non Mi Porta Gravida At Eget Metus</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- hàng 1 -->
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Image</td>
+                                    <td class="sticky left-[200px] z-20 p-4 align-top bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                        <div class="w-full h-40 bg-white flex items-center justify-center rounded">
+                                            <img src="../style_image/1-22-600x600.jpg" class="w-full h-full object-contain rounded">
+                                        </div>
+                                    </td>
+                                    <td class="p-4 align-top">
+                                        <div class="w-full h-40 bg-white flex items-center justify-center rounded">
+                                            <img src="../style_image/1-27-600x600.jpg" class="w-full h-full object-contain rounded">
+                                        </div>
+                                    </td>
+                                    <td class="p-4 align-top">
+                                        <div class="w-full h-40 bg-white flex items-center justify-center rounded">
+                                            <img src="../style_image/2-34-600x600.jpg" class="w-full h-full object-contain rounded">
+                                        </div>
+                                    </td>
+                                    <td class="p-4 align-top"><div class="w-full h-40 bg-gray-100 flex items-center justify-center rounded">
+                                        <div class="w-full h-40 bg-white flex items-center justify-center rounded">
+                                            <img src="../style_image/1-20-600x600.jpg" class="w-full h-full object-contain rounded">
+                                        </div>
+                                    </td>
+                                    <td class="p-4 align-top"><div class="w-full h-40 bg-gray-100 flex items-center justify-center rounded">
+                                        <div class="w-full h-40 bg-white flex items-center justify-center rounded">
+                                            <img src="../style_image/1-24-600x600.jpg" class="w-full h-full object-contain rounded">
+                                        </div>
+                                    </td>
+                                    <td class="p-4 align-top">
+                                        <div class="w-full h-40 bg-white flex items-center justify-center rounded">
+                                            <img src="../style_image/1-19-600x600.jpg" class="w-full h-full object-contain rounded">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">SKU</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-gray-600 bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">woo-album-2</td>
+                                    <td class="p-4 text-gray-600">Woo-beanie-logo</td>
+                                    <td class="p-4 text-gray-600">wp-pennant</td>
+                                    <td class="p-4 text-gray-600">woo-polo</td>
+                                    <td class="p-4 text-gray-600">woo-headset-v1</td> 
+                                    <td class="p-4 text-gray-600">woo-meter-x</td>    
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Rating</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-yellow-400 text-xs bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></td>
+                                    <td class="p-4 text-gray-300 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+                                    <td class="p-4 text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+                                    <td class="p-4 text-gray-300 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+                                    <td class="p-4 text-yellow-400 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></td>
+                                    <td class="p-4 text-gray-300 text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Price</td>
+                                    <td class="sticky left-[200px] z-20 p-4 bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                        <span class="font-bold text-black text-lg">$100.00</span> <span class="text-gray-400 line-through text-sm ml-1">$140.00</span>
+                                    </td>
+                                    <td class="p-4"><span class="font-bold text-black text-lg">$20.00</span></td>
+                                    <td class="p-4"><span class="font-bold text-black text-lg">$16.00</span> <span class="text-gray-400 line-through text-sm ml-1">$19.00</span></td>
+                                    <td class="p-4"><span class="font-bold text-black text-lg">$12.50</span></td>
+                                    <td class="p-4"><span class="font-bold text-black text-lg">$45.00</span></td>
+                                    <td class="p-4"><span class="font-bold text-black text-lg">$89.00</span> <span class="text-gray-400 line-through text-sm ml-1">$99.00</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Stock</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-green-500 font-medium text-sm bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                        <div class="flex items-center"><i class="fas fa-check-circle mr-2"></i> 15 in stock</div>
+                                    </td>
+                                    <td class="p-4"></td><td class="p-4"></td><td class="p-4"></td>
+                                    <td class="p-4 text-green-500 font-medium text-sm flex items-center"><i class="fas fa-check-circle mr-2"></i> 5 in stock</td>
+                                    <td class="p-4"></td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Weight</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-gray-500 bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">N/A</td>
+                                    <td class="p-4 text-gray-500">N/A</td><td class="p-4 text-gray-500">N/A</td><td class="p-4 text-gray-500">N/A</td>
+                                    <td class="p-4 text-gray-500">0.5 kg</td><td class="p-4 text-gray-500">1.2 kg</td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Dimensions</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-gray-500 bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">N/A</td>
+                                    <td class="p-4 text-gray-500">N/A</td><td class="p-4 text-gray-500">N/A</td><td class="p-4 text-gray-500">N/A</td>
+                                    <td class="p-4 text-gray-500">20x20x10 cm</td><td class="p-4 text-gray-500">N/A</td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Additional Information</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-gray-500 text-sm bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                        <span class="font-semibold text-gray-700">Size</span> 16 inch, 18 inch, 19 inch, 20 inch
+                                    </td>
+                                    <td class="p-4 text-gray-500"></td>
+                                    <td class="p-4 text-gray-500 text-sm"><span class="font-semibold text-gray-700">Size</span> 16 inch, 18 inch</td>
+                                    <td class="p-4 text-gray-500"></td>
+                                    <td class="p-4 text-gray-500 text-sm"><span class="font-semibold text-gray-700">Color</span> Black, White</td>
+                                    <td class="p-4 text-gray-500"></td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Description</td>
+                                    <td class="sticky left-[200px] z-20 p-4 text-gray-500 text-sm leading-relaxed bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.</td>
+                                    <td class="p-4 text-gray-500 text-sm leading-relaxed">Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.</td>
+                                    <td class="p-4 text-gray-500 text-sm leading-relaxed">Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.</td>
+                                    <td class="p-4 text-gray-500 text-sm leading-relaxed">Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.</td>
+                                    <td class="p-4 text-gray-500 text-sm leading-relaxed">Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.</td>
+                                    <td class="p-4 text-gray-500 text-sm leading-relaxed">Full of flavour but with palate cleansing acidity, our kiwifruit are rich in fibre and packed with the enzyme actinidin which are brilliant for digestion.</td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 z-20 p-4 font-bold text-gray-900 bg-gray-50 border-r border-gray-200">Add To Cart</td>
+                                    <td class="sticky left-[200px] z-20 p-4 bg-white border-r border-gray-200 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                        <button class="bg-black text-white text-xs font-bold py-3 px-6 w-full uppercase hover:bg-red-600 transition-colors">Add to cart</button>
+                                    </td>
+                                    <td class="p-4"><button class="bg-black text-white text-xs font-bold py-3 px-6 w-full uppercase hover:bg-red-600 transition-colors">Add to cart</button></td>
+                                    <td class="p-4"><button class="bg-black text-white text-xs font-bold py-3 px-6 w-full uppercase hover:bg-red-600 transition-colors">Add to cart</button></td>
+                                    <td class="p-4"><button class="bg-black text-white text-xs font-bold py-3 px-6 w-full uppercase hover:bg-red-600 transition-colors">Add to cart</button></td>
+                                    <td class="p-4"><button class="bg-black text-white text-xs font-bold py-3 px-6 w-full uppercase hover:bg-red-600 transition-colors">Add to cart</button></td>
+                                    <td class="p-4"><button class="bg-black text-white text-xs font-bold py-3 px-6 w-full uppercase hover:bg-red-600 transition-colors">Add to cart</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sp liên quan -->
+    <div class="max-w-7xl mx-auto px-4 mb-24 mt-16">
+        
+        <div class="flex justify-between items-center mb-8 pb-4 pt-4">
+            <h2 class="text-2xl font-bold text-gray-800 uppercase tracking-wide">Related Products</h2>
+            
+            <div class="flex items-center space-x-3" id="pagination-dots">
+                <button onclick="scrollToSlide(0)" class="dot-btn active w-5 h-5 rounded-full border border-red-600 flex items-center justify-center transition-all duration-200">
+                    <div class="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
+                </button>
+                <button onclick="scrollToSlide(1)" class="dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200"></button>
+                <button onclick="scrollToSlide(2)" class="dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200"></button>
+                <button onclick="scrollToSlide(3)" class="dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200"></button>
+                <button onclick="scrollToSlide(4)" class="dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200"></button>
+                <button onclick="scrollToSlide(5)" class="dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200"></button>
+                <button onclick="scrollToSlide(6)" class="dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200"></button>
+            </div>
+        </div>
+
+        <div id="related-carousel" class="flex overflow-x-auto gap-6 scroll-smooth pb-8 hide-scrollbar snap-x snap-mandatory">
+            
+            <!-- sp1 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4">
+                    <div class="h-[200px] flex items-center justify-center relative">
+                        <img src="../style_image/1-29-600x600.jpg" class="w-full h-full object-contain rounded">
+                        <div class="absolute bottom-0 left-0 right-0 flex justify-between px-2 text-center text-[10px] font-bold">
+                            <div class="bg-yellow-400 py-1 px-2 rounded w-1/4 mr-1">365<br><span class="font-normal">Days</span></div>
+                            <div class="bg-yellow-400 py-1 px-2 rounded w-1/4 mr-1">10<br><span class="font-normal">Hrs</span></div>
+                            <div class="bg-yellow-400 py-1 px-2 rounded w-1/4 mr-1">18<br><span class="font-normal">Mins</span></div>
+                            <div class="bg-yellow-400 py-1 px-2 rounded w-1/4">35<br><span class="font-normal">Secs</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Accessories</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Curabitur id est vel nisl dictum rutrum consectetur vel</h3>
+                <div class="flex text-gray-300 text-xs mb-2"></div>
+                <div class="flex text-yellow-400 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(5)</span>
+                </div>
+                <div class="font-bold text-black">$190.00</div>
+            </div>
+
+            <!-- sp2 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/2-26-600x600(1).jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Battery</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Suspendisse quis urna et nisl venenatis accumsan</h3>
+                <div class="flex text-yellow-400 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(3)</span>
+                </div>
+                <div class="font-bold text-black">$122.00 – $150.00</div>
+            </div>
+
+            <!-- sp3 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/1-23-600x600(1).jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Automotive Rims</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Cras vel lacus nec dolor pretium volutpat sed at arcu</h3>
+                <div class="flex text-yellow-400 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(1)</span>
+                </div>
+                <div class="font-bold text-black">$20.00</div>
+            </div>
+
+            <!-- sp4 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/1-21-700x700(1).jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Accessories</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Vivamus feugiat enim vitae consectetur ullamcorper</h3>
+                <div class="flex text-yellow-400 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(1)</span>
+                </div>
+                <div class="font-bold text-black">$16.00</div>
+            </div>
+
+            <!-- sp5 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/2-19-600x600.jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Brakes</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Vestibulum elementum ligula non sem maximus ornare leo</h3>
+                <div class="font-bold text-black">$18.00</div>
+            </div>
+
+            <!-- sp6 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/2-23-600x600(1).jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Parts</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Donec id elit non mi porta gravida at eget metus</h3>
+                <div class="font-bold text-black">$99.00</div>
+            </div>
+
+            <!-- sp7 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/1-24-600x600.jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Tools</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">Nam libero tempore, cum soluta nobis est eligendi</h3>
+                <div class="flex text-gray-300 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(0)</span>
+                </div>
+                <div class="font-bold text-black">$45.00</div>
+            </div>
+
+            <!-- sp8 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/2-24-600x600.jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">Brakes</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">
+                    Vestibulum elementum ligula non sem maximus ornare leo
+                </h3>
+                <div class="flex text-yellow-400 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(3)</span>
+                </div>
+                <div class="font-bold text-black">$18.00</div>
+            </div>
+
+            <!-- sp9 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/1-29-600x600.jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">woo-beanie</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">
+                    Aliquam Sit Amet Dui Nec Leo Dignissim Ullamcorper Orci
+                </h3>
+                <div class="flex text-gray-300 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(0)</span>
+                </div>
+                <div class="font-bold text-black">$18.00 <span class="text-gray-400 line-through text-xs font-normal ml-1">$20.00</span></div>
+            </div>
+
+            <!-- sp10 -->
+            <div class="min-w-[280px] w-[280px] flex-shrink-0 group cursor-pointer snap-start">
+                <div class="relative mb-4 border border-gray-100 rounded p-4 hover:shadow-lg transition-shadow">
+                    <div class="h-[200px] flex items-center justify-center">
+                        <img src="../style_image/2-34-600x600.jpg" class="w-full h-full object-contain rounded">
+                    </div>
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="text-[10px] text-gray-400 uppercase font-bold mb-1">woo-single</div>
+                <h3 class="font-bold text-gray-800 text-sm mb-2 group-hover:text-red-600 transition-colors">
+                    Mauris Tristique Sapien Quis Ante Tempor Aliquam Volutpat
+                </h3>
+                <div class="flex text-gray-300 text-xs mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-gray-400 ml-1 text-[10px]">(0)</span>
+                </div>
+                <div class="font-bold text-black">$19.00</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id = "footer-placeholder"></div>
+    <script>
+        // Hàm load header
+        fetch('../footer2.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi khi load footer:', error));
+    </script>
+
+    <script>
+        // --- 1. Tab Handling ---
+        function openTab(tabName) {
+            const tabContents = ['content-description', 'content-additional', 'content-reviews'];
+            const tabButtons = ['btn-description', 'btn-additional', 'btn-reviews'];
+
+            tabContents.forEach(id => document.getElementById(id).classList.add('hidden'));
+            tabButtons.forEach(id => {
+                document.getElementById(id).className = 'tab-inactive text-base transition-colors duration-200';
+            });
+
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('btn-' + tabName).className = 'tab-active text-base';
+        }
+
+        // --- 2. Star Rating Handling ---
+        let currentRating = 0;
+        const stars = document.querySelectorAll('#star-container i');
+
+        function updateStars(rating) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-gray-300');
+                    star.classList.add('text-yellow-400');
+                } else {
+                    star.classList.remove('text-yellow-400');
+                    star.classList.add('text-gray-300');
+                }
+            });
+        }
+        function hoverRating(rating) { updateStars(rating); }
+        function resetRating() { updateStars(currentRating); }
+        function setRating(rating) {
+            currentRating = rating;
+            document.getElementById('rating-value').value = rating;
+            updateStars(rating);
+        }
+
+        // --- 3. Related Products Logic (DÙNG CHẤM TRÒN) ---
+        function scrollToSlide(index) {
+            const container = document.getElementById('related-carousel');
+            const cardWidth = 280 + 24; // Width + Gap
+            
+            // 1. Scroll
+            container.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+
+            // 2. Update Dots Style
+            const dots = document.querySelectorAll('.dot-btn');
+            
+            dots.forEach((dot, i) => {
+                dot.innerHTML = '';
+                dot.className = ''; 
+
+                if (i === index) {
+                    // Active style
+                    dot.className = 'dot-btn w-5 h-5 rounded-full border border-red-600 flex items-center justify-center transition-all duration-200';
+                    dot.innerHTML = '<div class="w-1.5 h-1.5 bg-red-600 rounded-full"></div>';
+                } else {
+                    // Inactive style
+                    dot.className = 'dot-btn w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all duration-200 cursor-pointer';
+                }
+            });
+        }
+    </script>
+
+    <script>
+    function changeImage(element, newSrc) {
+        // 1. Đổi ảnh lớn
+        const mainImage = document.getElementById('main-image');
+        mainImage.style.opacity = '0.5'; // Hiệu ứng mờ nhẹ
+        setTimeout(() => {
+            mainImage.src = newSrc;
+            mainImage.style.opacity = '1';
+        }, 150);
+
+        // 2. Đổi viền đỏ (Active State)
+        const allThumbs = document.querySelectorAll('.thumb-item');
+        allThumbs.forEach(thumb => {
+            thumb.classList.remove('border-red-500', 'border-2');
+            thumb.classList.add('border-gray-200');
+        });
+        element.classList.remove('border-gray-200');
+        element.classList.add('border-red-500', 'border-2');
+    }
+</script>
+</body>
+</html>
