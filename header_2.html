@@ -26,6 +26,56 @@
     a:hover .icon-shake {
         animation: shake-right 0.6s infinite; /* 0.6s chạy 1 vòng lặp, infinite là mãi mãi */
     }
+    
+    /* --- 3. HIỆU ỨNG FLOAT IN CÓ NHỊP (STAGGER) --- */  
+    /* Định nghĩa chuyển động: Trượt từ dưới lên 10px và hiện dần */
+    @keyframes slideUpFade {
+        0% {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Mặc định các thẻ li trong danh sách có class .stagger-load sẽ ẩn */
+    .stagger-load li {
+        opacity: 0;
+        transform: translateY(20px); /* Đẩy xuống sâu hơn để thấy rõ lúc trượt lên */
+    }
+
+    /* 2. Định nghĩa Animation: Trượt lên và hiện ra */
+    @keyframes floatInSmooth {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* 3. Kích hoạt khi Hover: Chỉ chạy khi hover vào cha (.group hoặc .group/sub) */
+    .group:hover .stagger-load li,
+    .group\/sub:hover .stagger-load li {
+        animation: floatInSmooth 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    /* 4. CHỈNH LẠI THỜI GIAN TRỄ (DELAY) - QUAN TRỌNG NHẤT */
+    /* Tăng khoảng cách giữa các dòng lên 0.1s (thay vì 0.05s) để mắt kịp nhìn thấy từng cái */
+    
+    /* Dòng 1: Chờ 0.1s cho cái bảng menu hiện ra đã rồi mới chạy */
+    .stagger-load li:nth-child(1) { animation-delay: 0.1s; } 
+    .stagger-load li:nth-child(2) { animation-delay: 0.2s; }
+    .stagger-load li:nth-child(3) { animation-delay: 0.3s; }
+    .stagger-load li:nth-child(4) { animation-delay: 0.4s; }
+    .stagger-load li:nth-child(5) { animation-delay: 0.5s; }
+    .stagger-load li:nth-child(6) { animation-delay: 0.6s; }
+    .stagger-load li:nth-child(7) { animation-delay: 0.7s; }
+    .stagger-load li:nth-child(8) { animation-delay: 0.8s; }
 </style>
 
 <header class="bg-[#FFDE00] pb-6 pt-2 font-['Cairo']">
@@ -43,32 +93,33 @@
                 </a>
                 <div class="group relative h-full flex items-center">
     
-                    <a href="#" class="flex items-center gap-1 hover:text-white transition py-4">
+                    <!-- shop -->
+                    <a href="../shop/shop.html" class="flex items-center gap-1 hover:text-white transition py-4">
                         Shop <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
 
                     <div class="absolute top-full -left-[350px] w-[1000px] bg-white shadow-2xl border-t-4 border-[#FFDE00] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                         
-                        <div class="grid grid-cols-4 gap-8 p-8 text-left">
+                        <div class="stagger-load grid grid-cols-4 gap-8 p-8 text-left ">
                             
                             <div>
                                 <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
-                                <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Left Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Right Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Top Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Without Sidebar</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Full Width</a></li>
+                                <ul class="space-y-4 text-gray-500 font-normal text-sm stagger-load">
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Left Sidebar</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Right Sidebar</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Top Sidebar</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Without Sidebar</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Full Width</a></li>
                                 </ul>
                             </div>
 
                             <div>
                                 <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
                                 <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Left</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Right</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Top</a></li>
-                                    <li><a href="#" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Bottom</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Left</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Right</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Top</a></li>
+                                    <li><a href="../shop/shop.html" class="hover:text-[#e30000] hover:pl-1 transition-all">Category Canvas On Bottom</a></li>
                                 </ul>
                             </div>
 
@@ -93,43 +144,44 @@
                     </div>
                 </div>
                 
+                <!-- product -->
                 <div class="group relative h-full flex items-center">
     
-                    <a href="#" class="flex items-center gap-1 hover:text-white transition py-4">
+                    <a href="../product/product.html" class="flex items-center gap-1 hover:text-white transition py-4">
                         Product <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
 
-                    <div class="absolute top-full -left-[450px] w-[1100px] bg-white shadow-2xl border-t-4 border-[#FFDE00] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                    <div class="stagger-load absolute top-full -left-[450px] w-[1100px] bg-white shadow-2xl border-t-4 border-[#FFDE00] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                         
                         <div class="grid grid-cols-4 gap-8 p-10 text-left">
                             
                             <div>
                                 <h3 class="font-bold text-gray-900 mb-5 text-base uppercase">Products Details</h3>
                                 <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Left</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Top</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Bottom</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Right</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Left</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Top</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Bottom</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Thumbnail Right</a></li>
                                 </ul>
                             </div>
 
                             <div>
                                 <h3 class="font-bold text-gray-900 mb-5 text-base uppercase">Products Details</h3>
                                 <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Image Slider</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Tab Accordion</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Image Scroll Left</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Image Scroll Right</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Image Slider</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Tab Accordion</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Image Scroll Left</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Image Scroll Right</a></li>
                                 </ul>
                             </div>
 
                             <div>
                                 <h3 class="font-bold text-gray-900 mb-5 text-base uppercase">Products Details</h3>
                                 <ul class="space-y-4 text-gray-500 font-normal text-sm">
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Show All Variants</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Video</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Sticky Add To Cart</a></li>
-                                    <li><a href="#" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Deal Countdown</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Show All Variants</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Video</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Sticky Add To Cart</a></li>
+                                    <li><a href="../product/product.html" class="block hover:text-[#e30000] hover:pl-1 transition-all">Product Deal Countdown</a></li>
                                 </ul>
                             </div>
 
@@ -174,13 +226,14 @@
                     </div>
                 </div>
                 
+                <!-- pages -->
                 <div class="group relative h-full flex items-center">
 
                     <a href="#" class="flex items-center gap-1 hover:text-white transition py-4">
                         Pages <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
 
-                    <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-[#FFDE00] rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                    <div class="stagger-load absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-[#FFDE00] rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                         
                         <ul class="py-4 text-sm text-gray-500 font-medium">
                             
@@ -201,13 +254,14 @@
                     </div>
                 </div>
 
+                <!-- blog -->
                 <div class="group relative h-full flex items-center">
     
                     <a href="#" class="flex items-center gap-1 hover:text-white transition py-4">
                         Blog <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                     </a>
 
-                    <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-[#FFDE00] rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                    <div class="stagger-load absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-[#FFDE00] rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                         
                         <ul class="py-4 text-sm text-gray-700 font-medium">
                             

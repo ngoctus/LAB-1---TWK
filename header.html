@@ -1,3 +1,69 @@
+<style>
+
+    @keyframes shake-right {
+        0% { transform: translateX(0px); }
+        25% { transform: translateX(3px); } /* Dịch sang phải 3px */
+        50% { transform: translateX(0px); }
+        75% { transform: translateX(3px); }
+        100% { transform: translateX(0px); }
+    }
+
+    /* Kích hoạt: Khi hover vào thẻ <a> thì class .icon-shake bên trong sẽ chạy */
+    a:hover .icon-shake {
+        animation: shake-right 0.6s infinite; 
+    }
+
+    /* --- HIỆU ỨNG FLOAT IN CÓ NHỊP (STAGGER) --- */  
+    /* Định nghĩa chuyển động: Trượt từ dưới lên 10px và hiện dần */
+    @keyframes slideUpFade {
+        0% {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Mặc định các thẻ li trong danh sách có class .stagger-load sẽ ẩn */
+    .stagger-load li {
+        opacity: 0;
+        transform: translateY(20px); /* Đẩy xuống sâu hơn để thấy rõ lúc trượt lên */
+    }
+
+    /* 2. Định nghĩa Animation: Trượt lên và hiện ra */
+    @keyframes floatInSmooth {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* 3. Kích hoạt khi Hover: Chỉ chạy khi hover vào cha (.group hoặc .group/sub) */
+    .group:hover .stagger-load li,
+    .group\/sub:hover .stagger-load li {
+        animation: floatInSmooth 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    /* 4. CHỈNH LẠI THỜI GIAN TRỄ (DELAY) - QUAN TRỌNG NHẤT */
+    /* Tăng khoảng cách giữa các dòng lên 0.1s (thay vì 0.05s) để mắt kịp nhìn thấy từng cái */
+    
+    /* Dòng 1: Chờ 0.1s cho cái bảng menu hiện ra đã rồi mới chạy */
+    .stagger-load li:nth-child(1) { animation-delay: 0.1s; } 
+    .stagger-load li:nth-child(2) { animation-delay: 0.2s; }
+    .stagger-load li:nth-child(3) { animation-delay: 0.3s; }
+    .stagger-load li:nth-child(4) { animation-delay: 0.4s; }
+    .stagger-load li:nth-child(5) { animation-delay: 0.5s; }
+    .stagger-load li:nth-child(6) { animation-delay: 0.6s; }
+    .stagger-load li:nth-child(7) { animation-delay: 0.7s; }
+    .stagger-load li:nth-child(8) { animation-delay: 0.8s; }
+</style>
+
 <div class="bg-white border-b border-gray-100 relative z-[100]">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         
@@ -43,7 +109,7 @@
 
                 <div class="absolute top-full -left-20 w-[1000px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                     
-                    <div class="grid grid-cols-4 gap-8 p-8 text-left">
+                    <div class="stagger-load grid grid-cols-4 gap-8 p-8 text-left">
                         
                         <div>
                             <h3 class="font-bold text-gray-800 mb-4 text-base uppercase">Products Category</h3>
@@ -96,7 +162,7 @@
 
                 <div class="absolute top-full -left-60 w-[1100px] bg-white shadow-2xl border-t-4 border-red-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                     
-                    <div class="grid grid-cols-4 gap-8 p-10 text-left">
+                    <div class="stagger-load grid grid-cols-4 gap-8 p-10 text-left">
                         
                         <div>
                             <h3 class="font-bold text-gray-900 mb-5 text-base">Products Details</h3>
@@ -177,7 +243,7 @@
 
                 <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                     
-                    <ul class="py-4 text-sm text-gray-500 font-normal">
+                    <ul class="stagger-load py-4 text-sm text-gray-500 font-normal">
                         
                         <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">Contact us</a></li>
                         <li><a href="#" class="block px-6 py-2 hover:text-red-600 transition">About us</a></li>
@@ -202,7 +268,7 @@
                     Blog <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
                 </a>
 
-                <div class="absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
+                <div class="stagger-load absolute top-full left-0 w-52 bg-white shadow-xl border-t-4 border-red-600 rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-4 group-hover:translate-y-0">
                     
                     <ul class="py-4 text-sm text-gray-800 font-bold">
                         
@@ -298,7 +364,7 @@
                         <li class="group/sub relative"> 
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-lightbulb w-5 text-center text-gray-800 text-lg"></i> 
+                                    <i class="icon-shake fa-solid fa-lightbulb w-5 text-center text-gray-800 text-lg"></i> 
                                     Headlights & Lighting
                                 </div>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -325,7 +391,7 @@
                         <li class="group/sub relative"> 
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-volume-high w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-volume-high w-5 text-center text-gray-800 text-lg"></i>
                                     Car Audio Systems
                                 </div>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -350,7 +416,7 @@
                         <li class="group/sub relative"> 
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-dharmachakra w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-dharmachakra w-5 text-center text-gray-800 text-lg"></i>
                                     Tires & Wheels
                                 </div>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -374,7 +440,7 @@
                         <li class="group/sub relative"> 
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-dna w-5 text-center text-gray-800 text-lg -rotate-45"></i>
+                                    <i class="icon-shake fa-solid fa-dna w-5 text-center text-gray-800 text-lg -rotate-45"></i>
                                     Suspension
                                 </div>
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -398,7 +464,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-screwdriver-wrench w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-screwdriver-wrench w-5 text-center text-gray-800 text-lg"></i>
                                     Tools & Equipment
                                 </div>
                             </a>
@@ -407,7 +473,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-oil-can w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-oil-can w-5 text-center text-gray-800 text-lg"></i>
                                     Oil Car
                                 </div>
                             </a>
@@ -416,7 +482,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-compact-disc w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-compact-disc w-5 text-center text-gray-800 text-lg"></i>
                                     Brakes
                                 </div>
                             </a>
@@ -425,7 +491,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-shield-halved w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-shield-halved w-5 text-center text-gray-800 text-lg"></i>
                                     Auto Safety & Security
                                 </div>
                             </a>
@@ -434,7 +500,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-fan w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-fan w-5 text-center text-gray-800 text-lg"></i>
                                     Automotive Rims
                                 </div>
                             </a>
@@ -443,7 +509,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition border-b border-gray-50">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-regular fa-clone w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-regular fa-clone w-5 text-center text-gray-800 text-lg"></i>
                                     Automotive Display
                                 </div>
                             </a>
@@ -452,7 +518,7 @@
                         <li>
                             <a href="#" class="flex items-center justify-between px-5 py-3 hover:text-red-600 hover:bg-gray-50 transition">
                                 <div class="flex items-center gap-4">
-                                    <i class="fa-solid fa-car-battery w-5 text-center text-gray-800 text-lg"></i>
+                                    <i class="icon-shake fa-solid fa-car-battery w-5 text-center text-gray-800 text-lg"></i>
                                     Battery
                                 </div>
                             </a>
