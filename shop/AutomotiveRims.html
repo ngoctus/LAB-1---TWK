@@ -19,7 +19,7 @@
 
 <body class="bg-gray-50">
 
-    <div id="header-placeholder"></div>
+  <div id="header-placeholder"></div>
 
     <script>
         // Hàm load header
@@ -188,6 +188,19 @@
     content.classList.toggle("hidden");
     button.textContent = content.classList.contains("hidden") ? "SEE MORE +" : "SEE LESS -";
   }
+</script>
+
+<!-- footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+    // Hàm load footer
+    fetch('../footer2.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi load footer:', error));
 </script>
 
 </body>

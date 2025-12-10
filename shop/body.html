@@ -18,6 +18,17 @@
 </head>
 
 <body class="bg-gray-50">
+    <!-- <div id="header-placeholder"></div>
+
+    <script>
+        // Hàm load footer
+        fetch('../header_2.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Lỗi khi load header:', error));
+    </script> -->
 <section>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
@@ -638,6 +649,7 @@ body {
             }
         }
     </style>
+
     <div class="container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -1550,5 +1562,17 @@ body {
         }
     </script>
 </section>
+
+<!-- <div id="footer-placeholder"></div>
+
+<script>
+    // Hàm load footer
+    fetch('../footer2.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Lỗi khi load footer:', error));
+</script> -->
 </body>
 </html>
